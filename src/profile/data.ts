@@ -19,6 +19,7 @@ export const coverImages = [
 export const achievements = [
   { value: '17k+', label: 'Students trained' },
   { value: `${new Date().getFullYear() - 2010}+`, label: 'Years experience' },
+  { value: '100+', label: 'Engineers managed across teams' },
   { value: '10+', label: 'Partnerships' },
   { value: '$200k+', label: 'Investments' },
 ] as const
@@ -40,12 +41,15 @@ export const products = [
 ] as const
 
 export const companies = [
-  { title: 'Ivorylearn', role: 'Founder', year: '2025', status: 'Present' },
-  { title: 'TopUniverse Institute', role: 'Founder', year: '2025', status: 'Present', url: 'https://topuniverse.institute' },
-  { title: 'Mindstark AI', role: 'Founder', year: '2025', status: 'Present', url: 'https://mindstarkai.com' },
-  { title: 'Irisempowers', role: 'Co-founder', year: '2025', status: 'Present', url: 'https://irisempowers.com' },
-  { title: 'Kidsclubzone', role: 'Co-founder', year: '2023', status: 'Present', url: 'https://kidsclubzone.com' },
-  { title: 'Top Universe Org. (NGO)', role: 'Founder · Boltcliq Educational Foundation', year: '2021', status: 'Present', url: 'https://topuniverse.org' },
+  { title: 'Ivorylearn', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present' },
+  { title: 'TopUniverse Institute', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://topuniverse.institute' },
+  { title: 'Mindstark AI', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://mindstarkai.com' },
+  { title: 'Irisempowers', role: 'Co-founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://irisempowers.com' },
+  { title: 'Kidsclubzone', role: 'Co-founder', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present', url: 'https://kidsclubzone.com' },
+  { title: 'MyLove', role: 'Founder · Processed food for enterprise businesses', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+  { title: 'Farm25', role: 'Founder · Agricultural produce, distribution & AI platforms', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+  { title: 'Swift', role: 'Founder · Logistics for Boltcliq companies & partner brands', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+  { title: 'Top Universe Org. (NGO)', role: 'Founder · Boltcliq Educational Foundation', affiliation: '16+ members', year: '2021', status: 'Present', url: 'https://topuniverse.org' },
   { title: 'Boltcliq Consult (Consulting)', role: 'Founder', year: '2020', status: 'Present', url: 'https://boltcliq.com' },
   { title: 'The Boltcliq Company', role: 'Founder', year: '2014', status: 'Present', url: 'https://boltcliq.com', flagship: true },
   { title: 'Pingxtra', role: 'Founder', year: '2009', status: 'Closed' },

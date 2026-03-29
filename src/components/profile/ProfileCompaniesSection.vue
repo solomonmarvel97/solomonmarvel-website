@@ -8,6 +8,7 @@ defineProps<{
     status: string
     url?: string
     flagship?: boolean
+    affiliation?: string
   }>
 }>()
 </script>
@@ -27,18 +28,29 @@ defineProps<{
         class="flex items-center justify-between py-[7px] border-b last:border-0"
         :class="isDark ? 'border-[#1e1e1c]' : 'border-[#e8e5de]'"
       >
-        <div class="flex items-center gap-3 min-w-0">
-          <span class="text-[12px] w-8 shrink-0" :class="isDark ? 'text-[#444]' : 'text-[#aaa]'">{{ item.year }}</span>
-          <div class="flex flex-col min-w-0">
-            <a
-              v-if="item.url"
-              :href="item.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-[13px] truncate font-medium"
-              :class="item.flagship ? 'text-[#c9a84c]' : isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'"
-            >{{ item.title }}</a>
-            <span v-else class="text-[13px] truncate font-medium" :class="item.flagship ? 'text-[#c9a84c]' : isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'">{{ item.title }}</span>
+        <div class="flex min-w-0 flex-1 items-center gap-3">
+          <span class="w-8 shrink-0 text-[12px]" :class="isDark ? 'text-[#444]' : 'text-[#aaa]'">{{ item.year }}</span>
+          <div class="flex min-w-0 flex-1 flex-col">
+            <div class="flex min-w-0 items-baseline gap-2">
+              <a
+                v-if="item.url"
+                :href="item.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="min-w-0 truncate text-[13px] font-medium"
+                :class="item.flagship ? 'text-[#c9a84c]' : isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'"
+              >{{ item.title }}</a>
+              <span
+                v-else
+                class="min-w-0 truncate text-[13px] font-medium"
+                :class="item.flagship ? 'text-[#c9a84c]' : isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'"
+              >{{ item.title }}</span>
+              <span
+                v-if="item.affiliation"
+                class="shrink-0 text-[10px] italic leading-none"
+                :class="item.flagship ? 'text-[#a07830]' : isDark ? 'text-[#5c5c58]' : 'text-[#9a9a94]'"
+              >{{ item.affiliation }}</span>
+            </div>
             <span class="text-[11px]" :class="item.flagship ? 'text-[#a07830]' : isDark ? 'text-[#555]' : 'text-[#aaa]'">{{ item.role }}</span>
           </div>
         </div>

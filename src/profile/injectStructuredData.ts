@@ -59,6 +59,9 @@ export function injectProfileStructuredData() {
       { '@type': 'Organization', name: 'Top Universe Org.', url: 'https://topuniverse.org', foundingDate: '2021' },
       { '@type': 'Organization', name: 'Boltcliq Consult', url: 'https://boltcliq.com', foundingDate: '2020' },
       { '@type': 'Organization', name: 'Ivorylearn', foundingDate: '2025' },
+      { '@type': 'Organization', name: 'MyLove', foundingDate: '2023' },
+      { '@type': 'Organization', name: 'Farm25', foundingDate: '2023' },
+      { '@type': 'Organization', name: 'Swift', foundingDate: '2023' },
     ],
     hasCredential: '$200k+ in investments raised across 10+ businesses and partnerships',
     alumniOf: {

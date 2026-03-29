@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <section
     aria-label="Career highlights"
-    class="mb-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
+    class="mb-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4"
     data-achievements
   >
     <div
