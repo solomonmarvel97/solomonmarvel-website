@@ -91,7 +91,7 @@ function rowBorderClass() {
           :class="rowBorderClass"
         >
           <h2 class="m-0 pr-8 text-[1.125rem] font-semibold leading-snug" :class="modalTitleClass">
-            Cookie preferences
+            Cookies &amp; storage - solomonmarvelous.com
           </h2>
           <button
             type="button"
@@ -106,8 +106,9 @@ function rowBorderClass() {
 
         <div class="px-5 py-4">
           <p class="m-0 text-[13px] leading-relaxed" :class="modalBodyClass">
-            We use cookies to run the site, remember preferences, measure usage, and support marketing where
-            allowed. Strictly necessary cookies are always on. You can adjust optional categories below.
+            This is the personal profile site of Solomon Marvelous. We use cookies and similar technologies to keep the
+            site working, remember settings (such as light/dark theme), and-only with your consent-support analytics or
+            marketing tools. Strictly necessary storage is always on. Adjust optional categories below, then save.
           </p>
         </div>
 
@@ -116,7 +117,7 @@ function rowBorderClass() {
             <div class="min-w-0">
               <p class="m-0 text-[14px] font-medium" :class="modalTitleClass">Strictly necessary</p>
               <p class="mt-1 mb-0 text-[12px] leading-snug" :class="modalBodyClass">
-                Required for security, load balancing, and basic site function. Cannot be disabled.
+                Required so pages load and basic security works. Cannot be disabled.
               </p>
             </div>
             <Switch id="cookie-necessary" v-model="necessaryOn" disabled class="mt-0.5 shrink-0" />
@@ -132,7 +133,8 @@ function rowBorderClass() {
                 Functional
               </label>
               <p class="mt-1 mb-0 text-[12px] leading-snug" :class="modalBodyClass">
-                Remembers choices such as region or interface options.
+                Remembers your choices on this site, for example theme (light/dark) and cookie preferences stored in your
+                browser.
               </p>
             </div>
             <Switch id="cookie-functional" v-model="cookiePrefs.functional" class="mt-0.5 shrink-0" />
@@ -148,7 +150,8 @@ function rowBorderClass() {
                 Analytics &amp; performance
               </label>
               <p class="mt-1 mb-0 text-[12px] leading-snug" :class="modalBodyClass">
-                Helps us understand traffic and improve the experience (aggregated, where used).
+                If enabled, helps understand how people use the site (typically aggregated). You can leave this off if
+                you prefer.
               </p>
             </div>
             <Switch id="cookie-analytics" v-model="cookiePrefs.analytics" class="mt-0.5 shrink-0" />
@@ -164,7 +167,8 @@ function rowBorderClass() {
                 Marketing
               </label>
               <p class="mt-1 mb-0 text-[12px] leading-snug" :class="modalBodyClass">
-                Used to deliver relevant messages or measure campaigns when enabled.
+                Used only if we add campaign or advertising measurement later. This personal site does not run ads today;
+                you can keep this off.
               </p>
             </div>
             <Switch id="cookie-marketing" v-model="cookiePrefs.marketing" class="mt-0.5 shrink-0" />
@@ -200,7 +204,7 @@ function rowBorderClass() {
           :class="rowBorderClass"
         >
           <h2 class="m-0 pr-8 text-[1.125rem] font-semibold leading-snug" :class="modalTitleClass">
-            Personal information sharing
+            Personal information &amp; advertising choices
           </h2>
           <button
             type="button"
@@ -215,16 +219,18 @@ function rowBorderClass() {
 
         <div class="space-y-4 px-5 py-5">
           <p class="m-0 text-[13px] leading-relaxed" :class="modalBodyClass">
-            Some regions let you limit how personal information is used for advertising or “sale”/sharing beyond
-            essential service delivery. Turn the control on to record your preference on this device.
+            Depending on where you live, you may be able to limit how personal information is used for advertising or
+            certain types of sharing beyond what is essential to show this site. Use the control below to record a
+            preference on <strong class="font-medium" :class="modalTitleClass">this browser only</strong>.
           </p>
           <p class="m-0 text-[12px] leading-relaxed" :class="modalBodyClass">
-            This choice is stored locally in your browser. See our
+            solomonmarvelous.com is operated by Solomon Marvelous. This choice is stored locally in your browser. For
+            privacy questions about this site, email
             <a
-              href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement"
-              class="underline underline-offset-2 hover:text-[color:var(--fgColor-accent)]"
-            >Privacy Statement</a>
-            for full details.
+              href="mailto:solomon@boltcliq.com?subject=Privacy%20question%20%E2%80%94%20solomonmarvelous.com"
+              class="underline underline-offset-2"
+              :class="isDark ? 'text-[#c9c7c0] hover:text-[#e8e5de]' : 'text-[#444] hover:text-[#1a1a1a]'"
+            >solomon@boltcliq.com</a>.
           </p>
 
           <div
@@ -240,8 +246,8 @@ function rowBorderClass() {
                 Do not share my personal information for ads
               </label>
               <p class="mt-1 mb-0 text-[12px] leading-snug" :class="modalBodyClass">
-                When enabled, we treat this browser as opted out of non-essential sharing for targeted advertising,
-                consistent with applicable laws.
+                When on, we treat this browser as opted out of non-essential use or sharing for targeted advertising,
+                where that applies.
               </p>
             </div>
             <Switch id="ccpa-opt-out" v-model="ccpaOptOut" class="mt-0.5 shrink-0" />

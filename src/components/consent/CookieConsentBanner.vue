@@ -71,7 +71,7 @@ function profileIconCircleClass() {
   <Teleport to="body">
     <!--
       Full-viewport column + justify-end pins the bar to the visual bottom (reliable across engines).
-      Do not put slide transforms on this fixed shell — only on the inner bar surface.
+      Do not put slide transforms on this fixed shell - only on the inner bar surface.
     -->
     <div
       class="pointer-events-none fixed inset-x-0 top-0 bottom-0 z-40 flex flex-col justify-end"
@@ -89,7 +89,7 @@ function profileIconCircleClass() {
           class="pointer-events-auto w-full px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-4 sm:pt-3"
           :class="isDark ? 'bg-[#0d0d0c]/95 backdrop-blur-md' : 'bg-background/95 backdrop-blur-md'"
           role="region"
-          aria-label="Cookie consent"
+          aria-label="Cookie and storage preferences for solomonmarvelous.com"
         >
           <div
             class="mx-auto flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
@@ -98,17 +98,18 @@ function profileIconCircleClass() {
               class="m-0 max-w-none flex-1 min-w-0 text-[12px] leading-snug sm:max-w-[min(100%,42rem)] sm:text-[13px] sm:leading-relaxed"
               :class="isDark ? 'text-[#b5b3ac]' : 'text-muted-foreground'"
             >
-              We use cookies for essential features, preferences, and usage insights. Accept all, essential only, or
-              open settings. Dismissing hides this until you refresh—choose an option to save your preference.
+              <strong class="font-medium" :class="isDark ? 'text-[#e8e5de]' : 'text-foreground'">Solomon Marvelous</strong>
+              uses browser storage for essential operation, your theme choice, and-if you allow
+              it-analytics and marketing cookies.
             </p>
 
             <div class="flex shrink-0 flex-wrap items-center gap-2 sm:justify-end sm:gap-2">
               <button type="button" :class="profileOutlinePillClass()" @click="onOpenSettings">
                 Cookie settings
               </button>
-              <button type="button" :class="profileOutlinePillClass()" @click="onEssentialOnly">
+              <!-- <button type="button" :class="profileOutlinePillClass()" @click="onEssentialOnly">
                 Essential only
-              </button>
+              </button> -->
               <button type="button" :class="profilePrimaryPillClass()" @click="onAcceptAll">
                 Accept all
               </button>

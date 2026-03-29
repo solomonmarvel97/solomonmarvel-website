@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue'
 
-// Module-level singleton — shared across all components
+// Module-level singleton - shared across all components
 const isDark = ref(
   typeof localStorage !== 'undefined'
     ? localStorage.getItem('theme') !== 'light'

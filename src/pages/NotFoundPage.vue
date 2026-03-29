@@ -8,7 +8,7 @@ const isDark = ref(true)
 onMounted(() => {
   const saved = localStorage.getItem('theme')
   if (saved) isDark.value = saved === 'dark'
-  document.title = '404 — Page Not Found'
+  document.title = '404 - Page Not Found'
 })
 </script>
 
