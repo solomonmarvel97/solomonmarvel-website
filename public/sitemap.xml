@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://solomonmarvelous.com/profile</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://solomonmarvelous.com/profile/profile.png</image:loc>
+      <image:title>Solomon Marvelous - Enterprise Architect &amp; Technology Leader</image:title>
+      <image:caption>Profile photo of Solomon Marvelous, Enterprise Architect and Distinguished Technology Leader based in Lagos, Nigeria.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://solomonmarvelous.com/</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
