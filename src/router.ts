@@ -6,6 +6,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: ProfilePage },
+    { path: '/about', redirect: '/' },
     { path: '/:pathMatch(.*)*', component: NotFoundPage },
   ],
 })
