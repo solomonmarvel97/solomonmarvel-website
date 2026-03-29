@@ -112,12 +112,12 @@ export function usePrivacyConsent() {
       }
       recordConsentDecision()
     },
-    rejectNonEssentialCookies() {
-      cookiePrefs.value = { functional: true, analytics: false, marketing: false }
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem(COOKIE_STORAGE_KEY, JSON.stringify(cookiePrefs.value))
-      }
-      recordConsentDecision()
-    },
+    // rejectNonEssentialCookies() {
+    //   cookiePrefs.value = { functional: true, analytics: false, marketing: false }
+    //   if (typeof localStorage !== 'undefined') {
+    //     localStorage.setItem(COOKIE_STORAGE_KEY, JSON.stringify(cookiePrefs.value))
+    //   }
+    //   recordConsentDecision()
+    // },
   }
 }

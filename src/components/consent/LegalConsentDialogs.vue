@@ -16,7 +16,7 @@ const {
   persistCookiePrefs,
   persistCcpa,
   acceptAllCookies,
-  rejectNonEssentialCookies,
+  // rejectNonEssentialCookies,
 } = usePrivacyConsent()
 
 const necessaryOn = ref(true)
@@ -57,7 +57,7 @@ function acceptAllAndClose() {
 }
 
 function rejectNonEssentialAndClose() {
-  rejectNonEssentialCookies()
+  // rejectNonEssentialCookies()
   closeCookieModal()
 }
 

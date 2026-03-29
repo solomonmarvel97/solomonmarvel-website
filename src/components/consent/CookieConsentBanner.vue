@@ -9,7 +9,7 @@ const {
   shouldShowCookieBanner,
   consentDecisionRecorded,
   acceptAllCookies,
-  rejectNonEssentialCookies,
+  // rejectNonEssentialCookies,
   openCookiePreferences,
 } = usePrivacyConsent()
 
@@ -32,9 +32,9 @@ function onAcceptAll() {
   acceptAllCookies()
 }
 
-function onEssentialOnly() {
-  rejectNonEssentialCookies()
-}
+// function onEssentialOnly() {
+//   rejectNonEssentialCookies()
+// }
 
 function onOpenSettings() {
   openCookiePreferences()
