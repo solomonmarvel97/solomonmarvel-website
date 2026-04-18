@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { onMounted, provide } from 'vue'
-import CookieConsentBanner from './components/consent/CookieConsentBanner.vue'
-import LegalConsentDialogs from './components/consent/LegalConsentDialogs.vue'
 
 provide('weight', 'regular')
 
@@ -66,7 +64,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <CookieConsentBanner />
-  <LegalConsentDialogs />
   <RouterView />
 </template>
