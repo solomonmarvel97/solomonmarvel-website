@@ -15,6 +15,8 @@ import {
   experience,
 } from '@/profile/data'
 import ProfileLoadingBar from '@/components/profile/ProfileLoadingBar.vue'
+import BirthdayCelebration from '@/components/BirthdayCelebration.vue'
+import BirthdayBanner from '@/components/BirthdayBanner.vue'
 import ProfileCoverSection from '@/components/profile/ProfileCoverSection.vue'
 import ProfileAvatarSection from '@/components/profile/ProfileAvatarSection.vue'
 import ProfileIdentityHeader from '@/components/profile/ProfileIdentityHeader.vue'
@@ -107,6 +109,7 @@ onMounted(() => {
     ]"
   >
     <ProfileLoadingBar :page-loading="pageLoading" />
+    <BirthdayCelebration />
 
     <ProfileCoverSection
       :is-dark="isDark"
@@ -141,5 +144,6 @@ onMounted(() => {
         />
       </div>
     </main>
+    <BirthdayBanner />
   </div>
 </template>
