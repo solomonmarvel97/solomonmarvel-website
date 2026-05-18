@@ -32,6 +32,11 @@ const emit = defineEmits<{
       I've built - from products and platforms to communities of learners.
     </p>
     <p>
+      I started The Boltcliq Company in 2014, focused on building products and rendering services
+      to the SMB market in Africa. That work has been the through-line behind much of what I've
+      built since.
+    </p>
+    <p>
       Technology Leader with {{ yearsOfExperience }}+ years of experience designing and delivering scalable,
       high-performance systems across fintech, e-commerce, retail, banking, and AI domains.
       I specialise in architecting complex enterprise solutions that drive innovation,

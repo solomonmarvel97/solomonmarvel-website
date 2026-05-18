@@ -63,7 +63,7 @@ export function injectProfileStructuredData() {
       { '@type': 'Organization', name: 'Farm25', foundingDate: '2023' },
       { '@type': 'Organization', name: 'Swift', foundingDate: '2023' },
     ],
-    hasCredential: '$200k+ in investments raised across 10+ businesses and partnerships',
+    hasCredential: '$200k+ in personal financing across 20+ businesses and partnerships',
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'Computer Science',

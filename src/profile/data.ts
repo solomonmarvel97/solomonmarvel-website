@@ -17,11 +17,11 @@ export const coverImages = [
 ] as const
 
 export const achievements = [
-  { value: '17k+', label: 'Students trained' },
+  { value: '20k+', label: 'Students trained' },
   { value: `${new Date().getFullYear() - 2010}+`, label: 'Years experience' },
-  { value: '100+', label: 'Engineers managed across teams' },
-  { value: '10+', label: 'Partnerships' },
-  { value: '$200k+', label: 'Investments' },
+  { value: '150+', label: 'Engineers managed' },
+  { value: '20+', label: 'Partnerships' },
+  { value: '$200k+', label: 'Personal financing' },
 ] as const
 
 export const skills = [
@@ -65,6 +65,7 @@ export const experience: ExperienceGroup[] = [
     year: '2014',
     items: [
       { role: 'President', company: 'The Boltcliq Company', period: 'Present', url: 'https://boltcliq.com' },
+      { role: 'Chief Technology Officer', company: 'PeerPay Network', period: 'Present', url: 'https://peerpaynetwork.com' },
     ],
   },
   {
@@ -72,7 +73,6 @@ export const experience: ExperienceGroup[] = [
     items: [
       { role: 'Head of R&D', company: 'uLesson Group / Miva University', period: 'Sep 2025', url: 'https://miva.edu.ng' },
       { role: 'Senior AI Solutions Architect', company: 'uLesson Group / Miva University', period: 'May 2025', url: 'https://miva.edu.ng' },
-      { role: 'Chief Technology Officer', company: 'PeerPay Network', period: 'Present', url: 'https://peerpaynetwork.com' },
     ],
   },
   {
