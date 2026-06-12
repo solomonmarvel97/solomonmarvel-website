@@ -33,6 +33,7 @@ export const skills = [
 ] as const
 
 export const products = [
+  { title: 'Netbox', year: '2026', isNew: true, url: 'https://github.com/solomonmarvel97/netbox' },
   { title: 'JobBox', year: '2026', isNew: true, url: 'https://getjobbox.com' },
   { title: 'SupportBox', year: '2025', url: 'https://getsupportbox.com' },
   { title: 'SchoolBox', year: '2022' },
