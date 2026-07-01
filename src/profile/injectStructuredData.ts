@@ -49,6 +49,16 @@ export function injectProfileStructuredData() {
       {
         '@type': 'Occupation',
         name: 'Chief Technology Officer',
+        occupationLocation: { '@type': 'Organization', name: 'Luvie', url: 'https://luvie.io' },
+      },
+      {
+        '@type': 'Occupation',
+        name: 'Principal Solutions Architect Consultant',
+        occupationLocation: { '@type': 'Organization', name: 'GxPay', url: 'https://gxpay.net' },
+      },
+      {
+        '@type': 'Occupation',
+        name: 'Chief Technology Officer',
         occupationLocation: { '@type': 'Organization', name: 'PeerPay Network', url: 'https://peerpaynetwork.com' },
       },
     ],

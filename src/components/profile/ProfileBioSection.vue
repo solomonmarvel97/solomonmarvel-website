@@ -23,19 +23,22 @@ const emit = defineEmits<{
     itemprop="description"
   >
     <p>
-      Born in Delta State, Nigeria. My roots are in computer science, but I've always been drawn
-      to design, crafts, and the hands-on act of making things - there's something deeply
-      satisfying about building something from nothing and watching it come to life.
+      Born in Delta State, Nigeria, I started coding at age 8, experimenting with BASIC, Visual Basic 6,
+      and scripting before teaching myself Turbo Pascal, C#, Qt, and C++. At 14, I gained admission to
+      study Computer Science, graduating at 19. By 17, I had already built PingXtra, a campus social
+      network that sparked my passion for building products that connect people.
     </p>
     <p>
-      I love to make things and I love to teach people. Those two drives have shaped everything
-      I've built - from products and platforms to communities of learners.
+      I've always been driven by curiosity. Learning isn't just something I do. It's something I
+      genuinely enjoy. I love the challenge of mastering new ideas, creating meaningful products, and
+      sharing knowledge with others. Those passions have shaped my journey, influencing every product
+      I've built, every platform I've designed, and every community I've helped grow.
     </p>
     <p>
-      Technology Leader with {{ yearsOfExperience }}+ years of experience designing and delivering scalable,
-      high-performance systems across fintech, e-commerce, retail, banking, and AI domains.
-      I specialise in architecting complex enterprise solutions that drive innovation,
-      streamline operations, and deliver impactful results at scale.
+      Today, I'm a technology leader with over {{ yearsOfExperience }} years of experience designing and
+      delivering scalable, high-performance systems across fintech, banking, e-commerce, retail, and AI.
+      I specialise in architecting complex enterprise solutions that enable innovation, simplify
+      operations, and create lasting business impact at scale.
     </p>
     <p>
       You can find me on
