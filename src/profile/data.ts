@@ -35,22 +35,22 @@ export const skills = [
 export const products = [
   { title: 'Netbox', year: '2026', isNew: true, url: 'https://github.com/solomonmarvel97/netbox' },
   { title: 'JobBox', year: '2026', isNew: true, url: 'https://getjobbox.com' },
-  { title: 'SupportBox', year: '2025', url: 'https://getsupportbox.com' },
+  { title: 'SupportBox', year: '2025' },
   { title: 'SchoolBox', year: '2022' },
-  { title: '3dBox', year: '2025', url: 'https://get3dbox.com' },
-  { title: 'Usereferralai', year: '2024', url: 'https://usereferralai.com' },
+  { title: '3dBox', year: '2025' },
+  { title: 'Usereferralai', year: '2024' },
 ] as const
 
 export const companies = [
-  { title: 'Ivorylearn', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present' },
+  { title: 'Ivorylearn', role: 'Founding Partner', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present' },
   { title: 'TopUniverse Institute', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://topuniverse.institute' },
-  { title: 'Mindstark AI', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://mindstarkai.com' },
+  { title: 'Mindstark AI', role: 'Founding Partner', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://mindstarkai.com' },
   { title: 'Irisempowers', role: 'Co-founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://irisempowers.com' },
   { title: 'Kidsclubzone', role: 'Co-founder', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present', url: 'https://kidsclubzone.com' },
-  { title: 'MyLove', role: 'Founder · Processed food for enterprise businesses', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
-  { title: 'Farm25', role: 'Founder · Agricultural produce, distribution & AI platforms', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
-  { title: 'Swift', role: 'Founder · Logistics for Boltcliq companies & partner brands', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
-  { title: 'Top Universe Org. (NGO)', role: 'Founder · Boltcliq Educational Foundation', affiliation: '16+ members', year: '2021', status: 'Present', url: 'https://topuniverse.org' },
+  { title: 'MyLove', role: 'Founding Partner · Processed food for enterprise businesses', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+  { title: 'Farm25', role: 'Founding Partner · Agricultural produce, distribution & AI platforms', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+  { title: 'Swift', role: 'Founding Partner · Logistics for Boltcliq companies & partner brands', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+  { title: 'Top Universe Org. (NGO)', role: 'Founder · Boltcliq Educational Foundation', affiliation: '16k+ members', year: '2021', status: 'Present', url: 'https://topuniverse.org' },
   { title: 'Boltcliq Consult (Consulting)', role: 'Founder', year: '2020', status: 'Present', url: 'https://boltcliq.com' },
   { title: 'The Boltcliq Company', role: 'Founder', year: '2014', status: 'Present', url: 'https://boltcliq.com', flagship: true },
   { title: 'Pingxtra', role: 'Founder', year: '2009', status: 'Closed' },
@@ -70,6 +70,13 @@ export const experience: ExperienceGroup[] = [
     ],
   },
   {
+    year: '2026',
+    items: [
+      { role: 'Chief Technology Officer', company: 'Luvie · Fashion tech, UK', period: 'Mar 2026', url: 'https://luvie.io' },
+      { role: 'Principal Solutions Architect Consultant', company: 'GxPay · Fintech, Abuja', period: 'Apr 2026 · Consulting', url: 'https://gxpay.net' },
+    ],
+  },
+  {
     year: '2025',
     items: [
       { role: 'Head of R&D', company: 'uLesson Group / Miva University', period: 'Sep 2025', url: 'https://miva.edu.ng' },
@@ -79,14 +86,14 @@ export const experience: ExperienceGroup[] = [
   {
     year: '2024',
     items: [
-      { role: 'Lead Architect & Distinguished Engineer', company: 'Boltcliq Consult', period: 'Present' },
+      { role: 'Lead Architect & Distinguished Engineer', company: 'Boltcliq Consulting Team', period: 'Present' },
     ],
   },
   {
     year: '2023',
     items: [
       { role: 'Senior Solutions Architect', company: 'First City Monument Bank', period: 'May 2025' },
-      { role: 'Principal Software Engineer', company: 'Bunkr Essentials', period: 'Sep 2023' },
+      { role: 'Principal Software Engineer', company: 'Bunkr Essentials', period: 'Sep 2023 · Consultant' },
     ],
   },
   {
