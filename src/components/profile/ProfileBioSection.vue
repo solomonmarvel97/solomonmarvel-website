@@ -3,7 +3,6 @@ import { PhCopy, PhCheck } from '@phosphor-icons/vue'
 
 defineProps<{
   isDark: boolean
-  yearsOfExperience: number
   emailCopied: boolean
 }>()
 
@@ -15,13 +14,22 @@ const emit = defineEmits<{
 <template>
   <section
     aria-label="About Solomon Marvelous"
-    class="text-[13px] leading-[1.65] space-y-3 mb-10"
-    :class="isDark ? 'text-[#aaa]' : 'text-[#333]'"
+    class="mb-10"
     data-bio
     itemscope
     itemtype="https://schema.org/Person"
     itemprop="description"
   >
+    <h2
+      class="text-[11px] uppercase tracking-wider mb-4"
+      :class="isDark ? 'text-[#444]' : 'text-[#aaa]'"
+      data-writing-label
+    >My Story</h2>
+
+    <div
+      class="text-[13px] leading-[1.65] space-y-3"
+      :class="isDark ? 'text-[#aaa]' : 'text-[#333]'"
+    >
     <p>
       Born in Delta State, Nigeria, I started coding at age 8, experimenting with BASIC, Visual Basic 6,
       and scripting before teaching myself Turbo Pascal, C#, Qt, and C++. At 14, I gained admission to
@@ -33,12 +41,6 @@ const emit = defineEmits<{
       genuinely enjoy. I love the challenge of mastering new ideas, creating meaningful products, and
       sharing knowledge with others. Those passions have shaped my journey, influencing every product
       I've built, every platform I've designed, and every community I've helped grow.
-    </p>
-    <p>
-      Today, I'm a technology leader with over {{ yearsOfExperience }} years of experience designing and
-      delivering scalable, high-performance systems across fintech, banking, e-commerce, retail, and AI.
-      I specialise in architecting complex enterprise solutions that enable innovation, simplify
-      operations, and create lasting business impact at scale.
     </p>
     <p>
       You can find me on
@@ -59,5 +61,6 @@ const emit = defineEmits<{
         </button>
       </span>.
     </p>
+    </div>
   </section>
 </template>
