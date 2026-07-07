@@ -16,6 +16,39 @@ export const coverImages = [
   'https://images.pexels.com/photos/1421903/pexels-photo-1421903.jpeg',
 ] as const
 
+export const businessOfferings = [
+  {
+    title: 'Fractional CTO & Technical Leadership',
+    description:
+      'Strategic direction, engineering org design, hiring, and hands-on leadership for startups and scale-ups navigating critical growth phases.',
+  },
+  {
+    title: 'Enterprise & Cloud Architecture',
+    description:
+      'Scalable, high-performance systems across fintech, banking, e-commerce, and retail - microservices, event-driven platforms, and cloud-native infrastructure.',
+  },
+  {
+    title: 'AI & Intelligent Products',
+    description:
+      'LLMs, RAG pipelines, agentic AI, and multimodal systems built into real products - from strategy and architecture through to production deployment.',
+  },
+  {
+    title: 'End-to-End Product Development',
+    description:
+      'Full product builds from concept to shipped software - platforms, APIs, mobile apps, and internal tools. I don\'t just advise; I build.',
+  },
+  {
+    title: 'Engineering Consulting & Advisory',
+    description:
+      'Architecture reviews, technical due diligence, roadmap planning, and engineering team transformation for enterprises and founders.',
+  },
+  {
+    title: 'Platform & Ecosystem Design',
+    description:
+      'Multi-product ecosystems, API platforms, and operational systems that simplify complexity and create lasting business impact at scale.',
+  },
+] as const
+
 export const achievements = [
   { value: '17k+', label: 'Students trained' },
   { value: `${new Date().getFullYear() - 2010}+`, label: 'Years experience' },

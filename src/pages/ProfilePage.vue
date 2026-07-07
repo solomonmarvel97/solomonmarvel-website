@@ -8,6 +8,7 @@ import { useProfileClockWeather } from '@/composables/useProfileClockWeather'
 import { injectProfileStructuredData } from '@/profile/injectStructuredData'
 import {
   coverImages,
+  businessOfferings,
   achievements,
   skills,
   products,
@@ -21,6 +22,7 @@ import ProfileCoverSection from '@/components/profile/ProfileCoverSection.vue'
 import ProfileAvatarSection from '@/components/profile/ProfileAvatarSection.vue'
 import ProfileIdentityHeader from '@/components/profile/ProfileIdentityHeader.vue'
 import ProfileFractionalCtoCard from '@/components/profile/ProfileFractionalCtoCard.vue'
+import ProfileBusinessValueSection from '@/components/profile/ProfileBusinessValueSection.vue'
 import ProfileBioSection from '@/components/profile/ProfileBioSection.vue'
 import ProfileAchievementsSection from '@/components/profile/ProfileAchievementsSection.vue'
 import ProfileSkillsSection from '@/components/profile/ProfileSkillsSection.vue'
@@ -124,9 +126,13 @@ onMounted(() => {
       <div class="mx-auto max-w-[652px] px-4 sm:px-8 pb-16">
         <ProfileIdentityHeader :is-dark="isDark" />
         <ProfileFractionalCtoCard :is-dark="isDark" />
-        <ProfileBioSection
+        <ProfileBusinessValueSection
           :is-dark="isDark"
           :years-of-experience="yearsOfExperience"
+          :offerings="businessOfferings"
+        />
+        <ProfileBioSection
+          :is-dark="isDark"
           :email-copied="emailCopied"
           @copy-email="copyEmail"
         />
