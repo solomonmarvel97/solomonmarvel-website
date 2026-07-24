@@ -18,7 +18,7 @@ export const coverImages = [
 
 export const businessOfferings = [
   {
-    title: 'Fractional CTO & Technical Leadership',
+    title: 'Consulting Engagements & Technical Leadership',
     description:
       'Strategic direction, engineering org design, hiring, and hands-on leadership for startups and scale-ups navigating critical growth phases.',
   },
@@ -75,18 +75,25 @@ export const products = [
 ] as const
 
 export const companies = [
-  { title: 'Ivorylearn', role: 'Founding Partner', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present' },
-  { title: 'TopUniverse Institute', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://topuniverse.institute' },
-  { title: 'Mindstark AI', role: 'Founding Partner', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://mindstarkai.com' },
-  { title: 'Irisempowers', role: 'Co-founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://irisempowers.com' },
-  { title: 'Kidsclubzone', role: 'Co-founder', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present', url: 'https://kidsclubzone.com' },
+  { title: 'The JobBox Company', role: 'Founder & Chief Executive Officer · AI-native recruitment', year: '2025', status: 'Present', url: 'https://getjobbox.com' },
+  { title: 'PeerPay Network', role: 'Chief Technology Officer · Peer-to-peer lending & settlement', year: '2025', status: 'Present', url: 'https://peerpaynetwork.com' },
+  { title: 'Luvie Technologies UK', role: 'Chief Technology Officer · On-demand beauty & styling', year: '2025', status: 'Present', url: 'https://luvie.io' },
+  { title: 'GxPay', role: 'Principal Solutions Architect · Consultant', affiliation: 'Fintech payment gateway', year: '2026', status: 'Present', url: 'https://gxpay.net' },
+  { title: 'Ivorylearn', role: 'Executive Member / Technical Advisor', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://ivorylearn.com' },
+  { title: 'TopUniverse Institute', role: 'Founder & Board Member', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://topuniverse.institute' },
+  { title: 'Mindstark AI', role: 'Lead Architect & Distinguished Software Engineer', affiliation: 'A Boltcliq Partner · Venture studio', year: '2024', status: 'Present', url: 'https://mindstarkai.com' },
+  { title: 'Irisempowers', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://irisempowers.com' },
+  { title: 'Kidsclubzone', role: 'Founder & Board Member', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present', url: 'https://kidsclubzone.com' },
+  { title: 'Skyta.space', role: 'Distinguished Solutions Architect / Executive Member', year: '2023', status: 'Present' },
+  { title: 'CRRNetwork NGO', role: 'Head of IT', year: '2023', status: 'Present', url: 'https://crrnetwork.org' },
+  { title: 'NextGen Academy', role: 'Founder & Board Member', year: '2023', status: 'Present' },
   { title: 'MyLove', role: 'Founding Partner · Processed food for enterprise businesses', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
   { title: 'Farm25', role: 'Founding Partner · Agricultural produce, distribution & AI platforms', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
   { title: 'Swift', role: 'Founding Partner · Logistics for Boltcliq companies & partner brands', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
-  { title: 'Top Universe Org. (NGO)', role: 'Founder · Boltcliq Educational Foundation', affiliation: '16k+ members', year: '2021', status: 'Present', url: 'https://topuniverse.org' },
+  { title: 'Top Universe Org. (NGO)', role: 'Founder & Board Member · Boltcliq Educational Foundation', affiliation: '20k+ students trained', year: '2021', status: 'Present', url: 'https://topuniverse.org' },
   { title: 'Boltcliq Consult (Consulting)', role: 'Founder', year: '2020', status: 'Present', url: 'https://boltcliq.com' },
-  { title: 'The Boltcliq Company', role: 'Founder', year: '2014', status: 'Present', url: 'https://boltcliq.com', flagship: true },
-  { title: 'Pingxtra', role: 'Founder', year: '2009', status: 'Closed' },
+  { title: 'Boltcliq Group', role: 'Founder & Chief Executive Officer', year: '2014', status: 'Present', url: 'https://boltcliq.com', flagship: true },
+  { title: 'Pingxtra', role: 'Founder', year: '2010', status: 'Closed' },
 ] as const
 
 export type ExperienceGroup = {
@@ -98,65 +105,68 @@ export const experience: ExperienceGroup[] = [
   {
     year: '2014',
     items: [
-      { role: 'President', company: 'The Boltcliq Company', period: 'Present', url: 'https://boltcliq.com' },
-      { role: 'Chief Technology Officer', company: 'PeerPay Network', period: 'Present', url: 'https://peerpaynetwork.com' },
+      { role: 'Founder & Chief Executive Officer', company: 'Boltcliq Group', period: 'Present', url: 'https://boltcliq.com' },
     ],
   },
   {
     year: '2026',
     items: [
-      { role: 'Chief Technology Officer', company: 'Luvie · Fashion tech, UK', period: 'Mar 2026', url: 'https://luvie.io' },
-      { role: 'Principal Solutions Architect Consultant', company: 'GxPay · Fintech, Abuja', period: 'Apr 2026 · Consulting', url: 'https://gxpay.net' },
+      { role: 'Principal Solutions Architect Consultant', company: 'GxPay · Fintech payment gateway', period: 'Jun 2026 · Consulting', url: 'https://gxpay.net' },
     ],
   },
   {
     year: '2025',
     items: [
-      { role: 'Head of R&D', company: 'uLesson Group / Miva University', period: 'Sep 2025', url: 'https://miva.edu.ng' },
-      { role: 'Senior AI Solutions Architect', company: 'uLesson Group / Miva University', period: 'May 2025', url: 'https://miva.edu.ng' },
+      { role: 'Founder & Chief Executive Officer', company: 'The JobBox Company · AI-native recruitment', period: 'Present', url: 'https://getjobbox.com' },
+      { role: 'Chief Technology Officer', company: 'Luvie Technologies UK · On-demand beauty & styling', period: 'Present', url: 'https://luvie.io' },
+      { role: 'Chief Technology Officer', company: 'PeerPay Network', period: 'Present', url: 'https://peerpaynetwork.com' },
+      { role: 'Head of R&D', company: 'uLesson Group / Miva Open University', period: 'Aug 2025 – Oct 2025', url: 'https://miva.edu.ng' },
+      { role: 'Senior AI Solutions Architect / Technical Lead', company: 'uLesson Group / Miva Open University', period: 'May 2025 – Jun 2025', url: 'https://miva.edu.ng' },
     ],
   },
   {
     year: '2024',
     items: [
-      { role: 'Lead Architect & Distinguished Engineer', company: 'Boltcliq Consulting Team', period: 'Present' },
+      { role: 'Lead Architect & Distinguished Software Engineer', company: 'MindStark AI', period: 'Present', url: 'https://mindstarkai.com' },
     ],
   },
   {
     year: '2023',
     items: [
-      { role: 'Senior Solutions Architect', company: 'First City Monument Bank', period: 'May 2025' },
-      { role: 'Principal Software Engineer', company: 'Bunkr Essentials', period: 'Sep 2023 · Consultant' },
+      { role: 'Senior Solutions Architect', company: 'First City Monument Bank', period: 'Aug 2023 – Jun 2025' },
+      { role: 'Principal Software Engineer', company: 'Bunkr Essentials', period: 'Jul 2023 – Oct 2023 · Consultant' },
     ],
   },
   {
     year: '2022',
     items: [
-      { role: 'Contract Technical Writer', company: 'Redis', period: 'May 2023' },
+      { role: 'Contract Technical Writer', company: 'Redis', period: 'Sep 2022 – Jun 2023' },
     ],
   },
   {
     year: '2021',
     items: [
-      { role: 'Founding Partner & Program Lead', company: 'Top Universe Org. (NGO)', period: 'Present' },
+      { role: 'Founding Partner & Program Lead', company: 'Top Universe Org. (NGO)', period: 'Present', url: 'https://topuniverse.org' },
+      { role: 'Technical Partner / Solutions Architect & Lead Engineer', company: 'Hayche Network', period: 'Aug 2021 – Sep 2022' },
+      { role: 'Contract Senior Staff Engineer', company: 'MyRetailer', period: 'Dec 2021 – Feb 2022' },
     ],
   },
   {
     year: '2020',
     items: [
-      { role: 'Project Development Lead', company: 'UmbrellaTree Colab', period: 'Aug 2022' },
+      { role: 'Project Development Lead', company: 'UmbrellaTree Colab', period: 'Sep 2020 – Sep 2022' },
     ],
   },
   {
     year: '2017',
     items: [
-      { role: 'Mobile Application Engineer', company: 'Encentral Solutions', period: 'Dec 2017', url: 'https://www.encentralsolutions.com' },
+      { role: 'Mobile Application Engineer', company: 'Encentral Solutions', period: 'Jul 2017 – Jan 2018', url: 'https://www.encentralsolutions.com' },
     ],
   },
   {
-    year: '2009',
+    year: '2010',
     items: [
-      { role: 'Founder & Lead Engineer', company: 'Pingxtra', period: 'Dec 2013' },
+      { role: 'Founder & Full Stack Lead Engineer', company: 'Pingxtra', period: 'Jan 2010 – 2014' },
     ],
   },
 ]
