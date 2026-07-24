@@ -4,6 +4,10 @@ import { PhEnvelope } from '@phosphor-icons/vue'
 defineProps<{
   isDark: boolean
 }>()
+
+const emit = defineEmits<{
+  hire: []
+}>()
 </script>
 
 <template>
@@ -14,16 +18,15 @@ defineProps<{
     <p class="text-[11px] uppercase tracking-widest mb-2" :class="isDark ? 'text-[#444]' : 'text-[#aaa]'">Open to collaboration</p>
     <h2 class="text-[22px] font-semibold tracking-tight mb-2" :class="isDark ? 'text-[#e8e5de]' : 'text-[#1a1a1a]'">Let's build something together.</h2>
     <p class="text-[13px] mb-6 max-w-[380px] mx-auto leading-relaxed" :class="isDark ? 'text-[#666]' : 'text-[#888]'">
-      Whether you need a Fractional CTO, a strategic technical partner, or just want to connect - I'm always open to interesting conversations.
+      Whether you need consulting, a strategic technical partner, or just want to connect - I'm always open to interesting conversations.
     </p>
     <div class="flex items-center justify-center gap-3 flex-wrap">
-      <a
-        href="https://app.getjobbox.com/p/fractionalcto1"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        type="button"
         class="text-[12px] font-medium px-5 py-2 rounded-full transition-colors"
         :class="isDark ? 'bg-[#e8e5de] text-[#111110] hover:bg-white' : 'bg-[#1a1a1a] text-white hover:bg-[#333]'"
-      >Hire me as Fractional CTO</a>
+        @click="emit('hire')"
+      >Hire me</button>
       <a
         href="mailto:solomon@boltcliq.com"
         class="inline-flex items-center gap-1.5 text-[12px] font-medium px-5 py-2 rounded-full transition-colors border"

@@ -123,7 +123,7 @@ onUnmounted(() => {
         <AvatarBalloons :is-dark="isDark" />
         <img
           src="/profile/profile.png"
-          alt="Solomon Marvelous - Enterprise Architect and Distinguished Technology Leader based in Lagos, Nigeria"
+          alt="Solomon Marvelous - Chief Technology Officer, Enterprise Architect, and AI / ML, Cloud & Data Leader based in Lagos, Nigeria"
           data-avatar-img
           class="w-full h-full object-cover"
           style="filter: grayscale(100%); transition: filter 0s;"
@@ -143,7 +143,7 @@ onUnmounted(() => {
             <div class="relative">
               <img
                 src="/profile/profile.png"
-                alt="Solomon Marvelous - Enterprise Architect and Distinguished Technology Leader"
+                alt="Solomon Marvelous - Chief Technology Officer, Enterprise Architect, and AI / ML, Cloud & Data Leader"
                 data-modal-img
                 class="w-full aspect-square object-cover block cursor-pointer"
                 style="filter: grayscale(100%); transition: filter 0.35s ease;"
@@ -160,7 +160,7 @@ onUnmounted(() => {
 
             <div class="px-5 pt-4 pb-5">
               <p class="text-[15px] font-semibold leading-snug" :class="isDark ? 'text-[#e8e5de]' : 'text-[#1a1a1a]'">Solomon Marvelous</p>
-              <p class="text-[12px] mt-0.5 mb-4" :class="isDark ? 'text-[#555]' : 'text-[#888]'">Enterprise Architect · Distinguished Technology Leader</p>
+              <p class="text-[12px] mt-0.5 mb-4" :class="isDark ? 'text-[#555]' : 'text-[#888]'">Chief Technology Officer · Enterprise Architect · AI / ML, Cloud & Data Leader</p>
 
               <div class="flex items-center gap-3 mb-4">
                 <a

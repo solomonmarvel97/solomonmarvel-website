@@ -44,7 +44,7 @@ function onDismissBanner() {
   dismissedWithoutConsent.value = true
 }
 
-/** Matches ProfilePage pill CTAs (fractional CTO card + bottom CTA). */
+/** Matches ProfilePage pill CTAs (consulting card + bottom CTA). */
 function profilePrimaryPillClass() {
   return [
     'inline-flex items-center justify-center text-[11px] font-medium px-3 py-1.5 rounded-full transition-colors',

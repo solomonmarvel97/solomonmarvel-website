@@ -18,7 +18,7 @@ defineProps<{
       class="text-[12px] mt-0.5 mb-3"
       :class="isDark ? 'text-[#555]' : 'text-[#888]'"
       itemprop="jobTitle"
-    >Enterprise Architect · Distinguished Technology Leader</p>
+    >Chief Technology Officer · Enterprise Architect · AI / ML, Cloud & Data Leader</p>
 
     <div class="flex flex-wrap items-center gap-2 mb-3">
       <a

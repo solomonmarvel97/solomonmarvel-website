@@ -30,36 +30,42 @@ import ProfileProductsSection from '@/components/profile/ProfileProductsSection.
 import ProfileCompaniesSection from '@/components/profile/ProfileCompaniesSection.vue'
 import ProfileExperienceSection from '@/components/profile/ProfileExperienceSection.vue'
 import ProfileCollaborationCta from '@/components/profile/ProfileCollaborationCta.vue'
+import HireInquiryDialog from '@/components/profile/HireInquiryDialog.vue'
 import ProfileTimeWeatherFooter from '@/components/profile/ProfileTimeWeatherFooter.vue'
 
 usePageMeta({
-  title: 'Solomon Marvelous - Enterprise Architect & Distinguished Technology Leader',
+  title: 'Solomon Marvelous - CTO, Enterprise Architect & AI / ML Leader',
   description:
-    'Solomon Marvelous is an Enterprise Architect and Distinguished Technology Leader with 16+ years of experience across AI, cloud-native systems, fintech, and e-commerce. Founder of The Boltcliq Company, PeerPay Network, Mindstark AI, and more.',
+    'Solomon Marvelous is a Chief Technology Officer, Enterprise Architect, and AI / ML, Cloud & Data Leader with 16+ years of experience across fintech, banking, e-commerce, and AI. Founder of Boltcliq Group, The JobBox Company, and more.',
   canonical: 'https://solomonmarvelous.com/',
   og: {
     type: 'profile',
-    title: 'Solomon Marvelous - Enterprise Architect & Technology Leader',
+    title: 'Solomon Marvelous - CTO, Enterprise Architect & AI / ML Leader',
     description:
-      'Enterprise Architect with 16+ years building scalable systems across AI, fintech, cloud, and e-commerce. Founder of 10+ companies including The Boltcliq Company, PeerPay Network, and Mindstark AI.',
+      'CTO and enterprise architect with 16+ years building scalable systems across AI, fintech, cloud, and e-commerce. Founder of Boltcliq Group, JobBox, PeerPay Network, and more.',
     url: 'https://solomonmarvelous.com/',
     image: 'https://solomonmarvelous.com/profile/og-banner.png',
     imageWidth: 1200,
     imageHeight: 630,
-    imageAlt: 'Solomon Marvelous - Enterprise Architect and Distinguished Technology Leader, Lagos Nigeria',
+    imageAlt: 'Solomon Marvelous - Chief Technology Officer, Enterprise Architect, and AI / ML Leader, Lagos Nigeria',
   },
   twitter: {
-    title: 'Solomon Marvelous - Enterprise Architect & Technology Leader',
+    title: 'Solomon Marvelous - CTO, Enterprise Architect & AI / ML Leader',
     description:
-      'Enterprise Architect with 16+ years building scalable systems across AI, fintech, and cloud. Founder of 10+ companies including The Boltcliq Company and Mindstark AI.',
+      'CTO and enterprise architect with 16+ years building scalable systems across AI, fintech, and cloud. Founder of Boltcliq Group, JobBox, and more.',
     image: 'https://solomonmarvelous.com/profile/og-banner.png',
-    imageAlt: 'Solomon Marvelous - Enterprise Architect and Distinguished Technology Leader, Lagos Nigeria',
+    imageAlt: 'Solomon Marvelous - Chief Technology Officer, Enterprise Architect, and AI / ML Leader, Lagos Nigeria',
   },
 })
 
 const coverImage = ref('')
 const pageLoading = ref(true)
 const emailCopied = ref(false)
+const hireDialogOpen = ref(false)
+
+function openHireDialog() {
+  hireDialogOpen.value = true
+}
 
 function copyEmail() {
   navigator.clipboard.writeText('solomon@boltcliq.com')
@@ -95,7 +101,7 @@ const { time, weatherIcon, tempC } = useProfileClockWeather()
 
 onMounted(() => {
   coverImage.value = coverImages[Math.floor(Math.random() * coverImages.length)] + '?auto=compress&cs=tinysrgb&w=1200&h=400&fit=crop'
-  document.title = 'Solomon Marvelous - Enterprise Architect & Distinguished Technology Leader'
+  document.title = 'Solomon Marvelous - CTO, Enterprise Architect & AI / ML Leader'
   injectProfileStructuredData()
   setTimeout(() => { pageLoading.value = false }, 900)
 })
@@ -125,7 +131,7 @@ onMounted(() => {
 
       <div class="mx-auto max-w-[652px] px-4 sm:px-8 pb-16">
         <ProfileIdentityHeader :is-dark="isDark" />
-        <ProfileFractionalCtoCard :is-dark="isDark" />
+        <ProfileFractionalCtoCard :is-dark="isDark" @hire="openHireDialog" />
         <ProfileBusinessValueSection
           :is-dark="isDark"
           :years-of-experience="yearsOfExperience"
@@ -141,7 +147,7 @@ onMounted(() => {
         <ProfileProductsSection :is-dark="isDark" :products="products" />
         <ProfileCompaniesSection :is-dark="isDark" :companies="companies" />
         <ProfileExperienceSection :is-dark="isDark" :experience="experience" />
-        <ProfileCollaborationCta :is-dark="isDark" />
+        <ProfileCollaborationCta :is-dark="isDark" @hire="openHireDialog" />
         <ProfileTimeWeatherFooter
           :is-dark="isDark"
           :time="time"
@@ -151,5 +157,6 @@ onMounted(() => {
       </div>
     </main>
     <BirthdayBanner />
+    <HireInquiryDialog v-model:open="hireDialogOpen" :is-dark="isDark" />
   </div>
 </template>
