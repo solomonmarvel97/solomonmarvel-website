@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
-import { PhXLogo, PhLinkedinLogo, PhGithubLogo } from '@phosphor-icons/vue'
+import { PhXLogo, PhLinkedinLogo, PhGithubLogo, PhFileText } from '@phosphor-icons/vue'
 import AvatarBalloons from './AvatarBalloons.vue'
 import { gsap, prefersReducedMotion } from '@/lib/gsap'
 import { useBirthdayEffects } from '@/composables/useBirthdayEffects'
@@ -189,6 +189,16 @@ onUnmounted(() => {
                   :class="isDark ? 'bg-[#2a2a28] text-[#aaa] hover:text-[#e8e5de]' : 'bg-[#f0ede8] text-[#555] hover:text-[#1a1a1a]'"
                 >
                   <PhGithubLogo :size="15" weight="bold" />
+                </a>
+                <a
+                  href="https://docs.google.com/document/d/1G5WJOKDGw8FgIhJObvLY5wW3E5nl87iklANG676QOh8/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-center w-8 h-8 rounded-full transition-colors"
+                  :class="isDark ? 'bg-[#2a2a28] text-[#aaa] hover:text-[#e8e5de]' : 'bg-[#f0ede8] text-[#555] hover:text-[#1a1a1a]'"
+                  aria-label="Solomon Marvelous resume"
+                >
+                  <PhFileText :size="15" weight="bold" />
                 </a>
               </div>
 

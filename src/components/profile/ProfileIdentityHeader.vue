@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhXLogo, PhLinkedinLogo, PhGithubLogo, PhEnvelope } from '@phosphor-icons/vue'
+import { PhXLogo, PhLinkedinLogo, PhGithubLogo, PhFileText, PhEnvelope } from '@phosphor-icons/vue'
 
 defineProps<{
   isDark: boolean
@@ -53,6 +53,16 @@ defineProps<{
         aria-label="Solomon Marvelous on GitHub"
       >
         <PhGithubLogo :size="13" weight="bold" />
+      </a>
+      <a
+        href="https://docs.google.com/document/d/1G5WJOKDGw8FgIhJObvLY5wW3E5nl87iklANG676QOh8/edit?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center w-7 h-7 rounded-full transition-colors"
+        :class="isDark ? 'bg-[#2a2a28] text-[#aaa] hover:text-[#e8e5de]' : 'bg-[#e8e5de] text-[#555] hover:text-[#1a1a1a]'"
+        aria-label="Solomon Marvelous resume"
+      >
+        <PhFileText :size="13" weight="bold" />
       </a>
       <a
         href="mailto:solomon@boltcliq.com"
