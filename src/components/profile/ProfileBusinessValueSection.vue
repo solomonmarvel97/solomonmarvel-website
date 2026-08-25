@@ -1,32 +1,49 @@
 <script setup lang="ts">
+import { positioning } from '@/profile/positioning'
+import type { InquiryIntent } from '@/profile/inquiries'
+
 defineProps<{
   isDark: boolean
-  yearsOfExperience: number
   offerings: ReadonlyArray<{ title: string; description: string }>
+}>()
+
+const emit = defineEmits<{
+  inquiry: [intent: InquiryIntent]
 }>()
 </script>
 
 <template>
-  <section aria-label="What Solomon Marvelous does for businesses" class="mb-10">
+  <section aria-label="How Solomon Marvelous helps businesses scale with AI" class="mb-10">
     <h2
       class="text-[11px] uppercase tracking-wider mb-4"
       :class="isDark ? 'text-[#444]' : 'text-[#aaa]'"
       data-writing-label
-    >What I Do for Businesses</h2>
-
+    >{{ positioning.pitchHeading }}</h2>
     <p
-      class="text-[13px] leading-[1.65] mb-5"
-      :class="isDark ? 'text-[#aaa]' : 'text-[#333]'"
+      class="text-[12px] italic mb-4"
+      :class="isDark ? 'text-[#666]' : 'text-[#888]'"
       data-writing-row
-    >
-      Businesses hire me when they need more than code - they need someone who can see the full
-      picture, from product strategy to production systems. With over {{ yearsOfExperience }} years
-      of experience across fintech, banking, e-commerce, retail, and AI, I help companies turn
-      ambitious ideas into platforms that scale, teams that deliver, and technology that creates
-      lasting business impact.
-    </p>
+    >{{ positioning.contrarian }}</p>
 
-    <ul class="list-none p-0 m-0 space-y-3" aria-label="Business offerings">
+    <div
+      class="text-[13px] leading-[1.65] space-y-3 mb-5"
+      :class="isDark ? 'text-[#aaa]' : 'text-[#333]'"
+    >
+      <p data-writing-row>{{ positioning.salesHook }}</p>
+      <p data-writing-row>{{ positioning.salesProblem }}</p>
+      <p data-writing-row>{{ positioning.salesOutcome }}</p>
+      <p data-writing-row>{{ positioning.salesAuthority }}</p>
+      <p data-writing-row>
+        <button
+          type="button"
+          class="underline underline-offset-2"
+          :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'"
+          @click="emit('inquiry', 'engagement')"
+        >{{ positioning.salesCta }}</button>
+      </p>
+    </div>
+
+    <ul class="list-none p-0 m-0 space-y-3" aria-label="Vertical AI offerings">
       <li
         v-for="item in offerings"
         :key="item.title"

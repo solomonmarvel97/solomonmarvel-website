@@ -227,10 +227,10 @@ function rowBorderClass() {
             solomonmarvelous.com is operated by Solomon Marvelous. This choice is stored locally in your browser. For
             privacy questions about this site, email
             <a
-              href="mailto:solomon@boltcliq.com?subject=Privacy%20question%20%E2%80%94%20solomonmarvelous.com"
+              href="mailto:me@solomonmarvel.com?subject=Privacy%20question%20%E2%80%94%20solomonmarvelous.com"
               class="underline underline-offset-2"
               :class="isDark ? 'text-[#c9c7c0] hover:text-[#e8e5de]' : 'text-[#444] hover:text-[#1a1a1a]'"
-            >solomon@boltcliq.com</a>.
+            >me@solomonmarvel.com</a>.
           </p>
 
           <div

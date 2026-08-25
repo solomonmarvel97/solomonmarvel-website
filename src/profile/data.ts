@@ -18,155 +18,341 @@ export const coverImages = [
 
 export const businessOfferings = [
   {
-    title: 'Consulting Engagements & Technical Leadership',
+    title: 'Vertical AI integration',
     description:
-      'Strategic direction, engineering org design, hiring, and hands-on leadership for startups and scale-ups navigating critical growth phases.',
+      'I wire AI into the workflows that already make you money (underwriting, onboarding, matching, tutoring, payouts) so the system is specific to your industry and usable by your team.',
   },
   {
-    title: 'Enterprise & Cloud Architecture',
+    title: 'Production AI for scale',
     description:
-      'Scalable, high-performance systems across fintech, banking, e-commerce, and retail - microservices, event-driven platforms, and cloud-native infrastructure.',
+      'I take a working idea off a slide and put it into production: latency, audit trails, failure modes, and the architecture required to run at banking and payments volume.',
   },
   {
-    title: 'AI & Intelligent Products',
+    title: 'AI-native industry products',
     description:
-      'LLMs, RAG pipelines, agentic AI, and multimodal systems built into real products - from strategy and architecture through to production deployment.',
+      'I design and ship products where AI is the operating system, not a feature. That is the same pattern behind JobBox in recruitment and the systems I have led in education and fintech.',
   },
   {
-    title: 'End-to-End Product Development',
+    title: 'Vertical AI architecture',
     description:
-      'Full product builds from concept to shipped software - platforms, APIs, mobile apps, and internal tools. I don\'t just advise; I build.',
-  },
-  {
-    title: 'Engineering Consulting & Advisory',
-    description:
-      'Architecture reviews, technical due diligence, roadmap planning, and engineering team transformation for enterprises and founders.',
-  },
-  {
-    title: 'Platform & Ecosystem Design',
-    description:
-      'Multi-product ecosystems, API platforms, and operational systems that simplify complexity and create lasting business impact at scale.',
+      'I design the industry-specific spine that lets AI run in production: data, controls, failure modes, and the engineering path your team can actually ship.',
   },
 ] as const
 
 export const achievements = [
-  { value: '20k+', label: 'Students trained' },
-  { value: `${new Date().getFullYear() - 2010}+`, label: 'Years experience' },
-  { value: '150+', label: 'Engineers managed' },
-  { value: '20+', label: 'Partnerships' },
-  { value: '$200k+', label: 'Personal financing' },
+  { value: '20k+', label: 'Students trained to ship' },
+  { value: '20+', label: 'Years in production' },
+  { value: '150+', label: 'Engineers led' },
+  { value: '20+', label: 'Operating partnerships' },
+  { value: '$200k+', label: 'Personal capital deployed' },
 ] as const
 
 export const skills = [
-  { group: 'AI & ML', tags: ['Large Language Models', 'Retrieval-Augmented Generation', 'Agentic AI', 'Computer Vision', 'OpenCV', 'Multimodal AI', 'Fine-tuning & RLHF', 'Prompt Engineering', 'AI Agents & Orchestration', 'NLP', 'OpenAI', 'Anthropic Claude', 'Gemini', 'Mistral', 'LangChain', 'LlamaIndex', 'Hugging Face', 'TensorFlow', 'PyTorch', 'Diffusion Models'] },
+  { group: 'Vertical AI', tags: ['Vertical AI Integrations', 'Domain-specific AI', 'Production AI Systems', 'AI Agents & Orchestration', 'Retrieval-Augmented Generation', 'Large Language Models', 'Agentic AI', 'Fine-tuning & RLHF', 'Multimodal AI', 'Computer Vision', 'NLP', 'OpenAI', 'Anthropic Claude', 'Gemini', 'LangChain', 'LlamaIndex', 'Hugging Face', 'PyTorch'] },
   { group: 'Cloud', tags: ['AWS', 'Azure', 'GCP', 'Cloudflare', 'Serverless', 'Kubernetes', 'Docker', 'IaC'] },
   { group: 'Languages', tags: ['TypeScript', 'Python', 'Go', 'Rust', 'Java', 'Kotlin', 'JavaScript', 'C++'] },
   { group: 'Databases', tags: ['Graph Databases', 'Relational', 'Non-Relational', 'PostgreSQL', 'MongoDB', 'Redis', 'DynamoDB', 'CosmosDB', 'Neo4j'] },
-  { group: 'Architecture', tags: ['Enterprise Architecture', 'Solutions Architecture', 'Data Architecture', 'Algorithmic Design', 'Engineering Consulting', 'Microservices', 'Event-Driven', 'Distributed Systems', 'API Design', 'CI/CD'] },
+  { group: 'Architecture', tags: ['Enterprise Architecture', 'Solutions Architecture', 'Data Architecture', 'Microservices', 'Event-Driven', 'Distributed Systems', 'API Design', 'CI/CD'] },
 ] as const
 
-export const products = [
-  { title: 'Netbox', year: '2026', isNew: true, url: 'https://github.com/solomonmarvel97/netbox' },
-  { title: 'JobBox', year: '2026', isNew: true, url: 'https://getjobbox.com' },
-  { title: 'SupportBox', year: '2025' },
-  { title: 'SchoolBox', year: '2022' },
-  { title: '3dBox', year: '2025' },
-  { title: 'Usereferralai', year: '2024' },
-] as const
+export type Product = {
+  title: string
+  year: string
+  pitch: string
+  detail: string[]
+  url?: string
+  urlLabel?: string
+  isNew?: boolean
+}
 
-export const companies = [
-  { title: 'The JobBox Company', role: 'Founder & Chief Executive Officer · AI-native recruitment', year: '2025', status: 'Present', url: 'https://getjobbox.com' },
-  { title: 'PeerPay Network', role: 'Chief Technology Officer · Peer-to-peer lending & settlement', year: '2025', status: 'Present', url: 'https://peerpaynetwork.com' },
-  { title: 'Luvie Technologies UK', role: 'Chief Technology Officer · On-demand beauty & styling', year: '2025', status: 'Present', url: 'https://luvie.io' },
-  { title: 'GxPay', role: 'Principal Solutions Architect · Consultant', affiliation: 'Fintech payment gateway', year: '2026', status: 'Present', url: 'https://gxpay.net' },
-  { title: 'Ivorylearn', role: 'Executive Member / Technical Advisor', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://ivorylearn.com' },
-  { title: 'TopUniverse Institute', role: 'Founder & Board Member', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://topuniverse.institute' },
-  { title: 'Mindstark AI', role: 'Lead Architect & Distinguished Software Engineer', affiliation: 'A Boltcliq Partner · Venture studio', year: '2024', status: 'Present', url: 'https://mindstarkai.com' },
-  { title: 'Irisempowers', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://irisempowers.com' },
-  { title: 'Kidsclubzone', role: 'Founder & Board Member', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present', url: 'https://kidsclubzone.com' },
-  { title: 'Skyta.space', role: 'Distinguished Solutions Architect / Executive Member', year: '2023', status: 'Present' },
-  { title: 'CRRNetwork NGO', role: 'Head of IT', year: '2023', status: 'Present', url: 'https://crrnetwork.org' },
-  { title: 'NextGen Academy', role: 'Founder & Board Member', year: '2023', status: 'Present' },
-  { title: 'MyLove', role: 'Founding Partner · Processed food for enterprise businesses', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
-  { title: 'Farm25', role: 'Founding Partner · Agricultural produce, distribution & AI platforms', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
-  { title: 'Swift', role: 'Founding Partner · Logistics for Boltcliq companies & partner brands', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
-  { title: 'Top Universe Org. (NGO)', role: 'Founder & Board Member · Boltcliq Educational Foundation', affiliation: '20k+ students trained', year: '2021', status: 'Present', url: 'https://topuniverse.org' },
-  { title: 'Boltcliq Consult (Consulting)', role: 'Founder', year: '2020', status: 'Present', url: 'https://boltcliq.com' },
-  { title: 'Boltcliq Group', role: 'Founder & Chief Executive Officer', year: '2014', status: 'Present', url: 'https://boltcliq.com', flagship: true },
-  { title: 'Pingxtra', role: 'Founder', year: '2010', status: 'Closed' },
-] as const
+export const products: Product[] = [
+  {
+    title: 'Netbox',
+    year: '2026',
+    isNew: true,
+    url: 'https://github.com/solomonmarvel97/netbox',
+    urlLabel: 'View on GitHub',
+    pitch: 'Local network monitor that tells you if the problem is your Wi-Fi or the ISP.',
+    detail: [
+      'Netbox is a local network stability monitor with a Python backend and a Vue dashboard. It runs HTTP/S, TCP, ICMP, and DNS checks from your machine, stores history in SQLite, and helps you separate local network issues from upstream or ISP problems.',
+      'The dashboard covers live monitoring, configurable targets, incident history, and on-demand speed tests. It can run as a desktop app with a bundled backend, with no cloud required.',
+    ],
+  },
+  {
+    title: 'JobBox',
+    year: '2026',
+    isNew: true,
+    url: 'https://getjobbox.com',
+    urlLabel: 'Visit JobBox',
+    pitch: 'AI-native recruitment workspace for screening, scoring, and explaining candidate fit in minutes.',
+    detail: [
+      'JobBox is an AI-native recruitment workspace that helps recruiters, founders, and hiring teams screen, score, shortlist, and explain candidate fit in minutes instead of weeks, leveraging our enterprise-ready AI infrastructure.',
+    ],
+  },
+  {
+    title: 'SupportBox',
+    year: '2025',
+    pitch: 'Support desk for teams that need conversations, tickets, and replies in one workflow.',
+    detail: [
+      'SupportBox is a customer support product for teams that have outgrown a shared inbox. It brings incoming conversations, tickets, and replies into one queue so support work lives inside the operation instead of across email, chat, and spreadsheets.',
+      'It follows the same production pattern as the rest of the Box line: a system a team can run every day, not a chatbot dropped beside the helpdesk.',
+    ],
+  },
+  {
+    title: 'SchoolBox',
+    year: '2022',
+    pitch: 'School operations platform for students, classes, and institutional records.',
+    detail: [
+      'SchoolBox is an education operations product for schools and training institutes. It is built around the records a school actually runs: students, classes, staff, and the administration that sits behind teaching.',
+      'I shipped it in 2022 in the same education line as Top Universe and the institutes I still operate.',
+    ],
+  },
+  {
+    title: '3dBox',
+    year: '2025',
+    pitch: 'Browser-based 3D viewer for inspecting and presenting spatial files.',
+    detail: [
+      '3dBox is a 3D viewing product for models and spatial files in the browser. It is for inspecting, presenting, and sharing 3D assets without a heavyweight desktop suite.',
+      'It sits in the Box product line as the dedicated viewer for spatial work.',
+    ],
+  },
+  {
+    title: 'Usereferralai',
+    year: '2024',
+    url: 'https://usereferralai.com',
+    urlLabel: 'Visit ReferralAI',
+    pitch: 'Referral program tracking with codes, analytics, and fraud controls.',
+    detail: [
+      'Usereferralai (ReferralAI) is a referral management platform for businesses that run affiliate or referral programs. It tracks referral codes, conversions, and campaign performance from a shared dashboard.',
+      'The product covers real-time analytics, multi-platform tracking, fraud detection, and integration so a referral program can run as part of the growth operation rather than a spreadsheet on the side.',
+    ],
+  },
+]
+
+export type CompanyRole = {
+  role: string
+  period?: string
+}
+
+export type Company = {
+  title: string
+  role: string
+  year: string
+  status: string
+  url?: string
+  flagship?: boolean
+  affiliation?: string
+  roles?: CompanyRole[]
+}
+
+export type CompanyIndustryGroup = {
+  industry: string
+  companies: Company[]
+}
+
+export const companies: CompanyIndustryGroup[] = [
+  {
+    industry: 'Recruitment',
+    companies: [
+      { title: 'The JobBox Company', role: 'Founder & Chief Executive Officer · AI-native recruitment', year: '2025', status: 'Present', url: 'https://getjobbox.com' },
+    ],
+  },
+  {
+    industry: 'Holding & consulting',
+    companies: [
+      { title: 'Boltcliq Group', role: 'Founder & Chief Executive Officer', affiliation: '150k ARR Business Agency', year: '2014', status: 'Present', url: 'https://boltcliq.com', flagship: true },
+      { title: 'Boltcliq Consult (Consulting)', role: 'Founder', year: '2020', status: 'Present', url: 'https://boltcliq.com' },
+    ],
+  },
+  {
+    industry: 'Fintech & payments',
+    companies: [
+      { title: 'PeerPay Network', role: 'Chief Technology Officer · Peer-to-peer lending & settlement', year: '2025', status: 'Present', url: 'https://peerpaynetwork.com' },
+      { title: 'GxPay', role: 'Principal Solutions Architect · Consultant', affiliation: 'Payment gateway', year: '2026', status: 'Present', url: 'https://gxpay.net' },
+    ],
+  },
+  {
+    industry: 'Beauty & lifestyle',
+    companies: [
+      {
+        title: 'Luvie Technologies UK',
+        role: 'Technical Advisor & Independent Contributor',
+        affiliation: 'On-demand beauty & styling',
+        year: '2025',
+        status: 'Present',
+        url: 'https://luvie.io',
+        roles: [
+          { role: 'Technical Advisor & Independent Contributor' },
+          { role: 'Chief Technology Officer', period: '2025 – Aug 2026' },
+        ],
+      },
+    ],
+  },
+  {
+    industry: 'Education',
+    companies: [
+      { title: 'Ivorylearn', role: 'Executive Member / Technical Advisor · Digital skills for women', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://ivorylearn.com' },
+      { title: 'TopUniverse Institute', role: 'Founder & Board Member', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://topuniverse.institute' },
+      { title: 'Kidsclubzone', role: 'Founder & Board Member · STEM learning for kids', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present', url: 'https://kidsclubzone.com' },
+      { title: 'NextGen Academy', role: 'Founder & Board Member', year: '2023', status: 'Present' },
+      { title: 'Top Universe Org. (NGO)', role: 'Founder & Board Member · Boltcliq Educational Foundation', affiliation: '20k+ students trained', year: '2021', status: 'Present', url: 'https://topuniverse.org' },
+    ],
+  },
+  {
+    industry: 'Agriculture & food',
+    companies: [
+      { title: 'MyLove', role: 'Founding Partner · Processed food for enterprise businesses', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+      { title: 'Farm25', role: 'Founding Partner · Agricultural produce, distribution & AI platforms', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+    ],
+  },
+  {
+    industry: 'Logistics',
+    companies: [
+      { title: 'Swift', role: 'Founding Partner · Logistics for Boltcliq companies & partner brands', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+    ],
+  },
+  {
+    industry: 'Community',
+    companies: [
+      { title: 'Irisempowers', role: 'Founder', affiliation: 'A Boltcliq Partner', year: '2025', status: 'Present', url: 'https://irisempowers.com' },
+    ],
+  },
+  {
+    industry: 'AI & ventures',
+    companies: [
+      { title: 'Mindstark AI', role: 'Lead Architect & Distinguished Software Engineer', affiliation: 'A Boltcliq Partner · Venture studio', year: '2024', status: 'Present', url: 'https://mindstarkai.com' },
+    ],
+  },
+  {
+    industry: 'Social',
+    companies: [
+      { title: 'Pingxtra', role: 'Founder', year: '2010', status: 'Closed' },
+    ],
+  },
+]
+
+export type ExperienceRole = {
+  role: string
+  period?: string
+}
 
 export type ExperienceGroup = {
-  year: string
-  items: Array<{ role: string; company: string; period: string; url?: string }>
+  company: string
+  url?: string
+  detail?: string
+  roles: ExperienceRole[]
 }
 
 export const experience: ExperienceGroup[] = [
   {
-    year: '2014',
-    items: [
-      { role: 'Founder & Chief Executive Officer', company: 'Boltcliq Group', period: 'Present', url: 'https://boltcliq.com' },
+    company: 'The JobBox Company',
+    url: 'https://getjobbox.com',
+    detail: 'AI-native recruitment',
+    roles: [
+      { role: 'Founder & Chief Executive Officer' },
     ],
   },
   {
-    year: '2026',
-    items: [
-      { role: 'Principal Solutions Architect Consultant', company: 'GxPay · Fintech payment gateway', period: 'Jun 2026 · Consulting', url: 'https://gxpay.net' },
+    company: 'Boltcliq Group',
+    url: 'https://boltcliq.com',
+    detail: '150k ARR Business Agency',
+    roles: [
+      { role: 'Founder & Chief Executive Officer' },
     ],
   },
   {
-    year: '2025',
-    items: [
-      { role: 'Founder & Chief Executive Officer', company: 'The JobBox Company · AI-native recruitment', period: 'Present', url: 'https://getjobbox.com' },
-      { role: 'Chief Technology Officer', company: 'Luvie Technologies UK · On-demand beauty & styling', period: 'Present', url: 'https://luvie.io' },
-      { role: 'Chief Technology Officer', company: 'PeerPay Network', period: 'Present', url: 'https://peerpaynetwork.com' },
-      { role: 'Head of R&D', company: 'uLesson Group / Miva Open University', period: 'Aug 2025 – Oct 2025', url: 'https://miva.edu.ng' },
-      { role: 'Senior AI Solutions Architect / Technical Lead', company: 'uLesson Group / Miva Open University', period: 'May 2025 – Jun 2025', url: 'https://miva.edu.ng' },
+    company: 'PeerPay Network',
+    url: 'https://peerpaynetwork.com',
+    roles: [
+      { role: 'Chief Technology Officer' },
     ],
   },
   {
-    year: '2024',
-    items: [
-      { role: 'Lead Architect & Distinguished Software Engineer', company: 'MindStark AI', period: 'Present', url: 'https://mindstarkai.com' },
+    company: 'GxPay',
+    url: 'https://gxpay.net',
+    detail: 'Fintech payment gateway',
+    roles: [
+      { role: 'Principal Solutions Architect Consultant' },
     ],
   },
   {
-    year: '2023',
-    items: [
-      { role: 'Senior Solutions Architect', company: 'First City Monument Bank', period: 'Aug 2023 – Jun 2025' },
-      { role: 'Principal Software Engineer', company: 'Bunkr Essentials', period: 'Jul 2023 – Oct 2023 · Consultant' },
+    company: 'Luvie Technologies UK',
+    url: 'https://luvie.io',
+    detail: 'On-demand beauty & styling',
+    roles: [
+      { role: 'Technical Advisor & Independent Contributor' },
+      { role: 'Chief Technology Officer', period: '2025 – Aug 2026' },
     ],
   },
   {
-    year: '2022',
-    items: [
-      { role: 'Contract Technical Writer', company: 'Redis', period: 'Sep 2022 – Jun 2023' },
+    company: 'MindStark AI',
+    url: 'https://mindstarkai.com',
+    roles: [
+      { role: 'Lead Architect & Distinguished Software Engineer' },
     ],
   },
   {
-    year: '2021',
-    items: [
-      { role: 'Founding Partner & Program Lead', company: 'Top Universe Org. (NGO)', period: 'Present', url: 'https://topuniverse.org' },
-      { role: 'Technical Partner / Solutions Architect & Lead Engineer', company: 'Hayche Network', period: 'Aug 2021 – Sep 2022' },
-      { role: 'Contract Senior Staff Engineer', company: 'MyRetailer', period: 'Dec 2021 – Feb 2022' },
+    company: 'Top Universe Org. (NGO)',
+    url: 'https://topuniverse.org',
+    roles: [
+      { role: 'Founding Partner & Program Lead' },
     ],
   },
   {
-    year: '2020',
-    items: [
-      { role: 'Project Development Lead', company: 'UmbrellaTree Colab', period: 'Sep 2020 – Sep 2022' },
+    company: 'uLesson Group / Miva Open University',
+    url: 'https://miva.edu.ng',
+    roles: [
+      { role: 'Head of Research and Development', period: 'Aug 2025 – Oct 2025' },
+      { role: 'Senior AI Solutions Architect / Technical Lead', period: 'May 2025 – Jun 2025' },
     ],
   },
   {
-    year: '2017',
-    items: [
-      { role: 'Mobile Application Engineer', company: 'Encentral Solutions', period: 'Jul 2017 – Jan 2018', url: 'https://www.encentralsolutions.com' },
+    company: 'First City Monument Bank',
+    roles: [
+      { role: 'Senior Solutions Architect', period: 'Aug 2023 – Jun 2025' },
     ],
   },
   {
-    year: '2010',
-    items: [
-      { role: 'Founder & Full Stack Lead Engineer', company: 'Pingxtra', period: 'Jan 2010 – 2014' },
+    company: 'Bunkr Essentials',
+    roles: [
+      { role: 'Principal Software Engineer · Consultant', period: 'Jul 2023 – Oct 2023' },
+    ],
+  },
+  {
+    company: 'Redis',
+    roles: [
+      { role: 'Contract Technical Writer', period: 'Sep 2022 – Jun 2023' },
+    ],
+  },
+  {
+    company: 'Hayche Network',
+    roles: [
+      { role: 'Technical Partner / Solutions Architect & Lead Engineer', period: 'Aug 2021 – Sep 2022' },
+    ],
+  },
+  {
+    company: 'UmbrellaTree Colab',
+    roles: [
+      { role: 'Project Development Lead', period: 'Sep 2020 – Sep 2022' },
+    ],
+  },
+  {
+    company: 'MyRetailer',
+    roles: [
+      { role: 'Contract Senior Staff Engineer', period: 'Dec 2021 – Feb 2022' },
+    ],
+  },
+  {
+    company: 'Encentral Solutions',
+    url: 'https://www.encentralsolutions.com',
+    roles: [
+      { role: 'Mobile Application Engineer', period: 'Jul 2017 – Jan 2018' },
+    ],
+  },
+  {
+    company: 'Pingxtra',
+    roles: [
+      { role: 'Founder & Full Stack Lead Engineer', period: 'Jan 2010 – 2014' },
     ],
   },
 ]

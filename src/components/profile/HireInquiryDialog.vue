@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import Button from '@/components/ui/Button.vue'
 import { PhX, PhSpinner } from '@phosphor-icons/vue'
+import {
+  inquiryForms,
+  type InquiryIntent,
+} from '@/profile/inquiries'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   open: boolean
   isDark: boolean
-}>()
+  intent?: InquiryIntent
+}>(), {
+  intent: 'engagement',
+})
 
 const emit = defineEmits<{
   'update:open': [value: boolean]
@@ -17,6 +24,10 @@ const form = reactive({
   name: '',
   email: '',
   company: '',
+  industry: '',
+  workflow: '',
+  timeline: '',
+  role: '',
   message: '',
   website: '',
 })
@@ -24,6 +35,17 @@ const form = reactive({
 const submitting = ref(false)
 const errorMessage = ref('')
 const success = ref(false)
+
+const config = computed(() => inquiryForms[props.intent])
+
+watch(
+  () => props.intent,
+  () => {
+    resetForm()
+    errorMessage.value = ''
+    success.value = false
+  },
+)
 
 watch(
   () => props.open,
@@ -34,6 +56,18 @@ watch(
     }
   },
 )
+
+function resetForm() {
+  form.name = ''
+  form.email = ''
+  form.company = ''
+  form.industry = ''
+  form.workflow = ''
+  form.timeline = ''
+  form.role = ''
+  form.message = ''
+  form.website = ''
+}
 
 function close() {
   emit('update:open', false)
@@ -59,6 +93,10 @@ function labelClass() {
   ].join(' ')
 }
 
+function fieldId(key: string) {
+  return `inquiry-${props.intent}-${key}`
+}
+
 async function onSubmit() {
   if (submitting.value) return
 
@@ -70,9 +108,14 @@ async function onSubmit() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        intent: props.intent,
         name: form.name,
         email: form.email,
         company: form.company,
+        industry: form.industry,
+        workflow: form.workflow,
+        timeline: form.timeline,
+        role: form.role,
         message: form.message,
         website: form.website,
       }),
@@ -86,11 +129,7 @@ async function onSubmit() {
     }
 
     success.value = true
-    form.name = ''
-    form.email = ''
-    form.company = ''
-    form.message = ''
-    form.website = ''
+    resetForm()
   } catch {
     errorMessage.value = 'Network error. Please try again.'
   } finally {
@@ -115,10 +154,10 @@ async function onSubmit() {
               class="m-0 text-[1.125rem] font-semibold leading-snug"
               :class="isDark ? 'text-[#e8e5de]' : 'text-[#1a1a1a]'"
             >
-              Consulting inquiry
+              {{ config.title }}
             </h2>
             <p class="mt-1 mb-0 text-[12px] leading-snug" :class="isDark ? 'text-[#888]' : 'text-[#888]'">
-              Tell me a bit about what you need - I'll get back to you by email.
+              {{ config.subtitle }}
             </p>
           </div>
           <button
@@ -134,10 +173,10 @@ async function onSubmit() {
 
         <div v-if="success" class="px-5 py-8 text-center">
           <p class="m-0 text-[15px] font-medium" :class="isDark ? 'text-[#e8e5de]' : 'text-[#1a1a1a]'">
-            Message sent.
+            {{ config.successTitle }}
           </p>
           <p class="mt-2 mb-6 text-[13px] leading-relaxed" :class="isDark ? 'text-[#888]' : 'text-[#666]'">
-            Thanks - I'll reply to your email as soon as I can.
+            {{ config.successBody }}
           </p>
           <Button type="button" variant="default" size="sm" class="text-[12px] font-semibold" @click="close">
             Close
@@ -145,17 +184,16 @@ async function onSubmit() {
         </div>
 
         <form v-else class="flex flex-col" @submit.prevent="onSubmit">
-          <!-- Honeypot -->
           <div class="absolute -left-[9999px] top-auto h-0 w-0 overflow-hidden" aria-hidden="true">
-            <label for="hire-website">Website</label>
-            <input id="hire-website" v-model="form.website" type="text" tabindex="-1" autocomplete="off" />
+            <label :for="fieldId('website')">Website</label>
+            <input :id="fieldId('website')" v-model="form.website" type="text" tabindex="-1" autocomplete="off" />
           </div>
 
           <div class="space-y-4 px-5 py-5">
             <div>
-              <label for="hire-name" :class="labelClass()">Name</label>
+              <label :for="fieldId('name')" :class="labelClass()">Name</label>
               <input
-                id="hire-name"
+                :id="fieldId('name')"
                 v-model="form.name"
                 type="text"
                 required
@@ -167,9 +205,9 @@ async function onSubmit() {
             </div>
 
             <div>
-              <label for="hire-email" :class="labelClass()">Email</label>
+              <label :for="fieldId('email')" :class="labelClass()">Email</label>
               <input
-                id="hire-email"
+                :id="fieldId('email')"
                 v-model="form.email"
                 type="email"
                 required
@@ -181,11 +219,11 @@ async function onSubmit() {
             </div>
 
             <div>
-              <label for="hire-company" :class="labelClass()">
+              <label :for="fieldId('company')" :class="labelClass()">
                 Company <span class="font-normal opacity-60">(optional)</span>
               </label>
               <input
-                id="hire-company"
+                :id="fieldId('company')"
                 v-model="form.company"
                 type="text"
                 maxlength="160"
@@ -195,16 +233,30 @@ async function onSubmit() {
               />
             </div>
 
-            <div>
-              <label for="hire-message" :class="labelClass()">How can I help?</label>
+            <div v-for="field in config.fields" :key="field.key">
+              <label :for="fieldId(field.key)" :class="labelClass()">
+                {{ field.label }}
+                <span v-if="!field.required" class="font-normal opacity-60">(optional)</span>
+              </label>
               <textarea
-                id="hire-message"
-                v-model="form.message"
-                required
+                v-if="field.type === 'textarea'"
+                :id="fieldId(field.key)"
+                v-model="form[field.key]"
+                :required="field.required"
                 maxlength="5000"
                 rows="4"
-                placeholder="Briefly describe the engagement, timeline, or problem you're solving."
+                :placeholder="field.placeholder"
                 :class="[inputClass(), 'resize-y min-h-[96px] max-h-[200px]']"
+              />
+              <input
+                v-else
+                :id="fieldId(field.key)"
+                v-model="form[field.key]"
+                type="text"
+                :required="field.required"
+                maxlength="200"
+                :placeholder="field.placeholder"
+                :class="inputClass()"
               />
             </div>
 
@@ -242,7 +294,7 @@ async function onSubmit() {
               :disabled="submitting"
             >
               <PhSpinner v-if="submitting" :size="13" weight="bold" class="animate-spin" aria-hidden="true" />
-              {{ submitting ? 'Sending…' : 'Send inquiry' }}
+              {{ submitting ? 'Sending…' : config.submit }}
             </Button>
           </div>
         </form>

@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <section
-    aria-label="Work experience of Solomon Marvelous"
+    aria-label="Experience of Solomon Marvelous"
     class="mb-16"
     itemscope
     itemtype="https://schema.org/Person"
@@ -18,55 +18,60 @@ defineProps<{
       class="text-[11px] uppercase tracking-wider mb-4"
       :class="isDark ? 'text-[#444]' : 'text-[#aaa]'"
       data-writing-label
-    >Work Experience</h2>
-    <ol class="list-none p-0 m-0" aria-label="Work history">
-      <template v-for="group in experience" :key="group.year">
-        <li
-          v-for="(item, i) in group.items"
-          :key="item.role + item.company + i"
-          itemprop="worksFor"
-          itemscope
-          itemtype="https://schema.org/Organization"
-          data-writing-row
-          class="flex items-center justify-between py-[7px] border-b last:border-0"
-          :class="isDark ? 'border-[#1e1e1c]' : 'border-[#e8e5de]'"
-        >
-          <div class="flex items-center gap-3 min-w-0">
-            <span
-              v-if="i === 0"
-              class="text-[12px] w-8 shrink-0"
-              :class="isDark ? 'text-[#444]' : 'text-[#aaa]'"
-            >{{ group.year }}</span>
-            <span v-else class="w-8 shrink-0" />
-            <div class="flex flex-col min-w-0">
-              <span
-                class="text-[13px] truncate"
-                :class="isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'"
-                itemprop="jobTitle"
-              >{{ item.role }}</span>
-              <a
-                v-if="item.url"
-                :href="item.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[11px]"
-                :class="isDark ? 'text-[#555]' : 'text-[#aaa]'"
-                itemprop="name"
-              >{{ item.company }}</a>
-              <span
-                v-else
-                class="text-[11px]"
-                :class="isDark ? 'text-[#555]' : 'text-[#aaa]'"
-                itemprop="name"
-              >{{ item.company }}</span>
-            </div>
-          </div>
+    >Experience</h2>
+    <ol class="list-none p-0 m-0 space-y-5" aria-label="Work history by company">
+      <li
+        v-for="group in experience"
+        :key="group.company"
+        itemprop="worksFor"
+        itemscope
+        itemtype="https://schema.org/Organization"
+        data-writing-row
+      >
+        <div class="mb-1 flex min-w-0 items-baseline gap-2">
+          <a
+            v-if="group.url"
+            :href="group.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="min-w-0 truncate text-[13px] font-medium"
+            :class="isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'"
+            itemprop="url"
+          >
+            <span itemprop="name">{{ group.company }}</span>
+          </a>
           <span
-            class="text-[12px] shrink-0 ml-4"
-            :class="isDark ? 'text-[#444]' : 'text-[#aaa]'"
-          >{{ item.period }}</span>
-        </li>
-      </template>
+            v-else
+            class="min-w-0 truncate text-[13px] font-medium"
+            :class="isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'"
+            itemprop="name"
+          >{{ group.company }}</span>
+          <span
+            v-if="group.detail"
+            class="shrink-0 text-[10px] italic leading-none"
+            :class="isDark ? 'text-[#5c5c58]' : 'text-[#9a9a94]'"
+          >{{ group.detail }}</span>
+        </div>
+        <ul class="list-none p-0 m-0" :aria-label="`Roles at ${group.company}`">
+          <li
+            v-for="item in group.roles"
+            :key="item.role"
+            class="flex items-baseline justify-between gap-4 py-[5px] border-b last:border-0"
+            :class="isDark ? 'border-[#1e1e1c]' : 'border-[#e8e5de]'"
+          >
+            <span
+              class="min-w-0 text-[13px] leading-snug"
+              :class="isDark ? 'text-[#aaa]' : 'text-[#555]'"
+              itemprop="jobTitle"
+            >{{ item.role }}</span>
+            <span
+              v-if="item.period"
+              class="shrink-0 text-[12px] tabular-nums"
+              :class="isDark ? 'text-[#444]' : 'text-[#aaa]'"
+            >{{ item.period }}</span>
+          </li>
+        </ul>
+      </li>
     </ol>
   </section>
 </template>

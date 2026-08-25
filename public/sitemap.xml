@@ -3,20 +3,27 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://solomonmarvelous.com/profile</loc>
-    <lastmod>2026-07-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://solomonmarvelous.com/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://solomonmarvelous.com/profile/profile.png</image:loc>
-      <image:title>Solomon Marvelous - CTO, Enterprise Architect &amp; AI / ML Leader</image:title>
-      <image:caption>Profile photo of Solomon Marvelous, Chief Technology Officer, Enterprise Architect, and AI / ML, Cloud &amp; Data Leader based in Lagos, Nigeria.</image:caption>
+      <image:title>Solomon Marvelous, Vertical AI Integrations Expert</image:title>
+      <image:caption>Profile photo of Solomon Marvelous, a vertical AI integrations expert based in Lagos, Nigeria.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://solomonmarvelous.com/</loc>
-    <lastmod>2026-07-24</lastmod>
+    <loc>https://solomonmarvelous.com/about</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://solomonmarvelous.com/experience</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

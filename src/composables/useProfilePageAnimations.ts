@@ -41,39 +41,14 @@ export function useProfilePageAnimations(root: Ref<HTMLElement | null>) {
         )
       }
 
-      // ── Entrance: bio paragraphs staggered ────────────────────────────
-      const bioParagraphs = el.querySelectorAll<HTMLElement>('[data-bio] p')
-      if (bioParagraphs.length) {
+      const nav = el.querySelector<HTMLElement>('[data-nav]')
+      if (nav) {
         gsap.fromTo(
-          bioParagraphs,
-          { autoAlpha: 0, y: 16 },
-          { autoAlpha: 1, y: 0, duration: 0.52, stagger: 0.07, ease: 'power2.out', delay: 0.28 },
+          nav,
+          { autoAlpha: 0, y: 10 },
+          { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out', delay: 0.24 },
         )
       }
-
-      // ── Entrance: section labels + rows scroll-triggered ──────────────
-      el.querySelectorAll<HTMLElement>('[data-writing-label]').forEach((label) => {
-        gsap.fromTo(
-          label,
-          { autoAlpha: 0, y: 10 },
-          {
-            autoAlpha: 1, y: 0, duration: 0.4, ease: 'power2.out',
-            scrollTrigger: { trigger: label, start: 'top 92%', once: true },
-          },
-        )
-      })
-
-      el.querySelectorAll<HTMLElement>('[data-writing-row]').forEach((row, i) => {
-        gsap.fromTo(
-          row,
-          { autoAlpha: 0, x: -12 },
-          {
-            autoAlpha: 1, x: 0, duration: 0.38, ease: 'power2.out',
-            delay: (i % 8) * 0.045,
-            scrollTrigger: { trigger: row, start: 'top 94%', once: true },
-          },
-        )
-      })
 
       // ── Entrance: footer ──────────────────────────────────────────────
       const footer = el.querySelector<HTMLElement>('[data-footer]')
@@ -123,85 +98,15 @@ export function useProfilePageAnimations(root: Ref<HTMLElement | null>) {
         spotlight.remove()
       })
 
-      // ── Interaction: row hover lift + press flash ─────────────────────
-      const rows = el.querySelectorAll<HTMLElement>('[data-writing-row]')
-      rows.forEach((row) => {
-        const quickY = gsap.quickTo(row, 'y', { duration: 0.26, ease: 'power2.out' })
-        const quickX = gsap.quickTo(row, 'x', { duration: 0.26, ease: 'power2.out' })
-        const quickO = gsap.quickTo(row, 'opacity', { duration: 0.15, ease: 'power2.out' })
-
-        const enter = () => { quickY(-2); quickX(5) }
-        const leave = () => { quickY(0); quickX(0) }
-        const down  = () => { quickO(0.5) }
-        const up    = () => { quickO(1) }
-
-        row.addEventListener('pointerenter', enter)
-        row.addEventListener('pointerleave', leave)
-        row.addEventListener('pointercancel', leave)
-        row.addEventListener('pointerdown', down)
-        row.addEventListener('pointerup', up)
-        disposers.push(() => {
-          row.removeEventListener('pointerenter', enter)
-          row.removeEventListener('pointerleave', leave)
-          row.removeEventListener('pointercancel', leave)
-          row.removeEventListener('pointerdown', down)
-          row.removeEventListener('pointerup', up)
-          gsap.killTweensOf(row)
-        })
-      })
-
-      // ── Interaction: section label scramble on hover ──────────────────
-      const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-      el.querySelectorAll<HTMLElement>('[data-writing-label]').forEach((label) => {
-        const original = label.textContent ?? ''
-        let frame = 0
-        let raf = 0
-
-        const scramble = () => {
-          frame++
-          const progress = frame / 10
-          label.textContent = original
-            .split('')
-            .map((char, i) => {
-              if (char === ' ' || char === '/' || char === '&') return char
-              if (i / original.length < progress) return char
-              return CHARS[Math.floor(Math.random() * CHARS.length)]
-            })
-            .join('')
-          if (progress < 1) raf = requestAnimationFrame(scramble)
-          else label.textContent = original
-        }
-
-        const start = () => { frame = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(scramble) }
-        label.addEventListener('pointerenter', start)
-        disposers.push(() => {
-          label.removeEventListener('pointerenter', start)
-          cancelAnimationFrame(raf)
-          label.textContent = original
-        })
-      })
-
-      // ── Interaction: avatar float loop + hover (color reveal + scale) ──
+      // ── Interaction: avatar float loop + hover scale ──────────────────
       if (avatar) {
-        const img = avatar.querySelector<HTMLImageElement>('[data-avatar-img]')
-
         const floatTween = gsap.to(avatar, {
           y: -3, duration: 1.8, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 0.8,
         })
 
         const avatarEnter = () => {
           floatTween.pause()
-          // Scale up the container
           gsap.to(avatar, { scale: 1.1, y: -5, duration: 0.18, ease: 'power2.out' })
-          // Reveal color with a custom GSAP tween on the filter property
-          if (img) {
-            gsap.to({ v: 100 }, {
-              v: 0,
-              duration: 0.35,
-              ease: 'power2.out',
-              onUpdate() { img.style.filter = `grayscale(${(this as any).targets()[0].v}%)` },
-            })
-          }
         }
 
         const avatarLeave = () => {
@@ -211,15 +116,6 @@ export function useProfilePageAnimations(root: Ref<HTMLElement | null>) {
               floatTween.resume()
             },
           })
-          // Fade back to grayscale
-          if (img) {
-            gsap.to({ v: 0 }, {
-              v: 100,
-              duration: 0.45,
-              ease: 'power2.in',
-              onUpdate() { img.style.filter = `grayscale(${(this as any).targets()[0].v}%)` },
-            })
-          }
         }
 
         avatar.addEventListener('pointerenter', avatarEnter)
@@ -268,3 +164,110 @@ export function useProfilePageAnimations(root: Ref<HTMLElement | null>) {
     ctx?.revert()
   })
 }
+
+export function useProfileSectionAnimations(root: Ref<HTMLElement | null>) {
+  let ctx: gsap.Context | undefined
+  const disposers: Array<() => void> = []
+
+  onMounted(() => {
+    if (prefersReducedMotion() || !root.value) return
+
+    ctx = gsap.context(() => {
+      const el = root.value!
+
+      const bioParagraphs = el.querySelectorAll<HTMLElement>('[data-bio] p')
+      if (bioParagraphs.length) {
+        gsap.fromTo(
+          bioParagraphs,
+          { autoAlpha: 0, y: 16 },
+          { autoAlpha: 1, y: 0, duration: 0.52, stagger: 0.07, ease: 'power2.out', delay: 0.12 },
+        )
+      }
+
+      el.querySelectorAll<HTMLElement>('[data-writing-label]').forEach((label) => {
+        gsap.fromTo(
+          label,
+          { autoAlpha: 0, y: 10 },
+          {
+            autoAlpha: 1, y: 0, duration: 0.4, ease: 'power2.out',
+            scrollTrigger: { trigger: label, start: 'top 92%', once: true },
+          },
+        )
+      })
+
+      el.querySelectorAll<HTMLElement>('[data-writing-row]').forEach((row, i) => {
+        gsap.fromTo(
+          row,
+          { autoAlpha: 0, x: -12 },
+          {
+            autoAlpha: 1, x: 0, duration: 0.38, ease: 'power2.out',
+            delay: (i % 8) * 0.045,
+            scrollTrigger: { trigger: row, start: 'top 94%', once: true },
+          },
+        )
+      })
+
+      const rows = el.querySelectorAll<HTMLElement>('[data-writing-row]')
+      rows.forEach((row) => {
+        const quickY = gsap.quickTo(row, 'y', { duration: 0.26, ease: 'power2.out' })
+        const quickX = gsap.quickTo(row, 'x', { duration: 0.26, ease: 'power2.out' })
+        const quickO = gsap.quickTo(row, 'opacity', { duration: 0.15, ease: 'power2.out' })
+
+        const enter = () => { quickY(-2); quickX(5) }
+        const leave = () => { quickY(0); quickX(0) }
+        const down  = () => { quickO(0.5) }
+        const up    = () => { quickO(1) }
+
+        row.addEventListener('pointerenter', enter)
+        row.addEventListener('pointerleave', leave)
+        row.addEventListener('pointercancel', leave)
+        row.addEventListener('pointerdown', down)
+        row.addEventListener('pointerup', up)
+        disposers.push(() => {
+          row.removeEventListener('pointerenter', enter)
+          row.removeEventListener('pointerleave', leave)
+          row.removeEventListener('pointercancel', leave)
+          row.removeEventListener('pointerdown', down)
+          row.removeEventListener('pointerup', up)
+          gsap.killTweensOf(row)
+        })
+      })
+
+      const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+      el.querySelectorAll<HTMLElement>('[data-writing-label]').forEach((label) => {
+        const original = label.textContent ?? ''
+        let frame = 0
+        let raf = 0
+
+        const scramble = () => {
+          frame++
+          const progress = frame / 10
+          label.textContent = original
+            .split('')
+            .map((char, i) => {
+              if (char === ' ' || char === '/' || char === '&') return char
+              if (i / original.length < progress) return char
+              return CHARS[Math.floor(Math.random() * CHARS.length)]
+            })
+            .join('')
+          if (progress < 1) raf = requestAnimationFrame(scramble)
+          else label.textContent = original
+        }
+
+        const start = () => { frame = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(scramble) }
+        label.addEventListener('pointerenter', start)
+        disposers.push(() => {
+          label.removeEventListener('pointerenter', start)
+          cancelAnimationFrame(raf)
+          label.textContent = original
+        })
+      })
+    }, root.value)
+  })
+
+  onUnmounted(() => {
+    disposers.forEach((d) => d())
+    ctx?.revert()
+  })
+}
+

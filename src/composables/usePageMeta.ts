@@ -4,6 +4,7 @@ export interface PageMeta {
   title: string
   description: string
   canonical: string
+  keywords?: string
   og: {
     type: 'website' | 'profile' | 'article'
     title: string
@@ -35,6 +36,7 @@ export function usePageMeta(meta: PageMeta) {
     document.title = meta.title
 
     setMeta('meta[name="description"]', 'content', meta.description)
+    if (meta.keywords) setMeta('meta[name="keywords"]', 'content', meta.keywords)
     setMeta('link[rel="canonical"]', 'href', meta.canonical)
 
     setMeta('meta[property="og:type"]', 'content', meta.og.type)

@@ -1,10 +1,20 @@
-/** Injects JSON-LD for Person, ProfilePage, WebSite, and BreadcrumbList. Idempotent per navigation. */
-export function injectProfileStructuredData() {
+import { faqs, positioning } from './positioning'
+
+const BASE_URL = 'https://solomonmarvelous.com'
+
+function replaceLdJson(schemas: object[]) {
   document.querySelectorAll('script[data-profile-ld]').forEach(el => el.remove())
+  for (const schema of schemas) {
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.setAttribute('data-profile-ld', 'true')
+    script.textContent = JSON.stringify(schema)
+    document.head.appendChild(script)
+  }
+}
 
-  const BASE_URL = 'https://solomonmarvelous.com'
-
-  const person = {
+function personSchema() {
+  return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     '@id': `${BASE_URL}/#person`,
@@ -12,11 +22,11 @@ export function injectProfileStructuredData() {
     givenName: 'Solomon',
     familyName: 'Marvelous',
     alternateName: ['marvmargic', 'superdeveloper'],
-    jobTitle: 'Chief Technology Officer · Enterprise Architect · AI / ML, Cloud & Data Leader',
-    description: `Chief Technology Officer and enterprise architect with ${new Date().getFullYear() - 2010}+ years designing, building, and scaling high-performance systems across fintech, banking, e-commerce, retail, education, and artificial intelligence.`,
-    image: `${BASE_URL}/profile/og-banner.png`,
+    jobTitle: positioning.title,
+    description: 'Solomon Marvelous is a vertical AI integrations expert who helps businesses grow and scale with AI. Two decades designing and shipping industry-specific AI systems into products, operations, and platforms.',
+    image: `${BASE_URL}/profile/profile.png`,
     url: `${BASE_URL}/`,
-    email: 'solomon@boltcliq.com',
+    email: 'me@solomonmarvel.com',
     nationality: { '@type': 'Country', name: 'Nigeria' },
     birthPlace: { '@type': 'Place', name: 'Delta State, Nigeria' },
     homeLocation: { '@type': 'Place', name: 'Lagos, Nigeria' },
@@ -30,25 +40,15 @@ export function injectProfileStructuredData() {
       'https://luvie.io',
     ],
     knowsAbout: [
-      'Enterprise Architecture', 'Solutions Architecture', 'Data Architecture',
-      'Large Language Models', 'Retrieval-Augmented Generation', 'Agentic AI',
-      'Computer Vision', 'Multimodal AI', 'Fine-tuning', 'RLHF',
-      'AI Agents', 'Prompt Engineering', 'LangChain', 'LlamaIndex',
-      'Diffusion Models', 'Hugging Face', 'OpenAI', 'Anthropic Claude',
-      'Cloud Computing', 'AWS', 'Azure', 'Google Cloud Platform',
-      'Kubernetes', 'Docker', 'IaC', 'Serverless',
-      'TypeScript', 'Python', 'Go', 'Rust', 'Java', 'Node.js',
-      'Graph Databases', 'Relational Databases', 'Non-Relational Databases',
-      'PostgreSQL', 'MongoDB', 'Redis', 'Neo4j',
-      'Microservices', 'Event-Driven Architecture', 'Distributed Systems',
-      'Fintech', 'EdTech', 'API Design', 'CI/CD',
+      'Vertical AI Integrations', 'Vertical AI', 'AI for Business Growth', 'Scaling with AI',
+      'Industry-Specific AI', 'AI Product Integration', 'Operational AI',
+      'Enterprise AI Adoption', 'AI-Native Product Development',
+      'Large Language Models', 'Retrieval-Augmented Generation', 'Agentic AI', 'AI Agents',
+      'Multimodal AI', 'Fine-tuning', 'Prompt Engineering',
+      'Solutions Architecture', 'Cloud-Native AI Infrastructure',
+      'Fintech AI', 'EdTech AI', 'Distributed Systems',
     ],
     hasOccupation: [
-      {
-        '@type': 'Occupation',
-        name: 'Founder & Chief Executive Officer',
-        occupationLocation: { '@type': 'Organization', name: 'Boltcliq Group', url: 'https://boltcliq.com' },
-      },
       {
         '@type': 'Occupation',
         name: 'Founder & Chief Executive Officer',
@@ -61,13 +61,18 @@ export function injectProfileStructuredData() {
       },
       {
         '@type': 'Occupation',
-        name: 'Chief Technology Officer',
+        name: 'Technical Advisor & Independent Contributor',
         occupationLocation: { '@type': 'Organization', name: 'Luvie Technologies UK', url: 'https://luvie.io' },
       },
       {
         '@type': 'Occupation',
-        name: 'Principal Solutions Architect Consultant',
+        name: 'Principal Solutions Architect',
         occupationLocation: { '@type': 'Organization', name: 'GxPay', url: 'https://gxpay.net' },
+      },
+      {
+        '@type': 'Occupation',
+        name: 'Founder & Chief Executive Officer',
+        occupationLocation: { '@type': 'Organization', name: 'Boltcliq Group', url: 'https://boltcliq.com' },
       },
     ],
     founder: [
@@ -91,44 +96,133 @@ export function injectProfileStructuredData() {
       description: 'Higher National Diploma, Computer Science (2014 – 2016)',
     },
   }
+}
 
-  const profilePage = {
-    '@context': 'https://schema.org',
-    '@type': 'ProfilePage',
-    '@id': `${BASE_URL}/#profilepage`,
-    name: 'Solomon Marvelous - CTO, Enterprise Architect & AI / ML Leader',
-    description: 'Profile page of Solomon Marvelous, Chief Technology Officer, Enterprise Architect, and AI / ML, Cloud & Data Leader with 16+ years of experience.',
-    url: `${BASE_URL}/`,
-    mainEntity: { '@id': `${BASE_URL}/#person` },
-    dateModified: '2026-07-24',
-    inLanguage: 'en',
-    image: `${BASE_URL}/profile/profile.png`,
-  }
-
-  const website = {
+function websiteSchema() {
+  return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${BASE_URL}/#website`,
     name: 'Solomon Marvelous',
     url: BASE_URL,
-    description: 'Personal profile of Solomon Marvelous - Chief Technology Officer, Enterprise Architect, and AI / ML, Cloud & Data Leader.',
+    description: 'Personal site of Solomon Marvelous, a vertical AI integrations expert who helps businesses grow and scale with AI.',
     inLanguage: 'en',
     author: { '@id': `${BASE_URL}/#person` },
+  }
+}
+
+/** Injects JSON-LD for Person, ProfilePage, WebSite, and BreadcrumbList. Idempotent per navigation. */
+export function injectProfileStructuredData() {
+  const profilePage = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${BASE_URL}/#profilepage`,
+    name: 'Vertical AI Integrations Expert | Solomon Marvelous',
+    description: 'Work and profile of Solomon Marvelous, a vertical AI integrations expert who helps businesses grow and scale with AI.',
+    url: `${BASE_URL}/`,
+    mainEntity: { '@id': `${BASE_URL}/#person` },
+    dateModified: '2026-08-25',
+    inLanguage: 'en',
+    image: `${BASE_URL}/profile/profile.png`,
   }
 
   const breadcrumb = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 1, name: 'Work', item: BASE_URL },
     ],
   }
 
-  for (const schema of [person, profilePage, website, breadcrumb]) {
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.setAttribute('data-profile-ld', 'true')
-    script.textContent = JSON.stringify(schema)
-    document.head.appendChild(script)
+  const service = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${BASE_URL}/#service`,
+    name: 'Vertical AI Integrations',
+    serviceType: 'Vertical AI integration consulting and implementation',
+    description: 'Industry-specific AI designed, shipped, and scaled for founders and operators in fintech, banking, recruitment, and education.',
+    url: BASE_URL,
+    provider: { '@id': `${BASE_URL}/#person` },
+    areaServed: [
+      { '@type': 'Place', name: 'Lagos, Nigeria' },
+      { '@type': 'Place', name: 'Worldwide' },
+    ],
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Founders, operators, and product leaders who want to grow and scale with AI',
+    },
   }
+
+  const faqPage = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${BASE_URL}/#faq`,
+    mainEntity: faqs.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  }
+
+  replaceLdJson([personSchema(), profilePage, websiteSchema(), breadcrumb, service, faqPage])
 }
+
+/** Injects JSON-LD for the My Story / About page. Idempotent per navigation. */
+export function injectAboutStructuredData() {
+  const aboutPage = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': `${BASE_URL}/about#page`,
+    name: 'My Story: From Coding at 8 to Vertical AI | Solomon Marvelous',
+    description: 'Born in Delta State, Nigeria, Solomon Marvelous started coding at 8. Today he is a vertical AI integrations expert helping businesses grow and scale with AI.',
+    url: `${BASE_URL}/about`,
+    mainEntity: { '@id': `${BASE_URL}/#person` },
+    dateModified: '2026-08-25',
+    inLanguage: 'en',
+    image: `${BASE_URL}/profile/profile.png`,
+  }
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Work', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'My Story', item: `${BASE_URL}/about` },
+    ],
+  }
+
+  replaceLdJson([personSchema(), aboutPage, websiteSchema(), breadcrumb])
+}
+
+export function injectSectionStructuredData(page: {
+  path: string
+  name: string
+  description: string
+  crumb: string
+}) {
+  const url = `${BASE_URL}${page.path}`
+  const webPage = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${url}#page`,
+    name: page.name,
+    description: page.description,
+    url,
+    mainEntity: { '@id': `${BASE_URL}/#person` },
+    dateModified: '2026-08-25',
+    inLanguage: 'en',
+    image: `${BASE_URL}/profile/profile.png`,
+  }
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Work', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: page.crumb, item: url },
+    ],
+  }
+
+  replaceLdJson([personSchema(), webPage, websiteSchema(), breadcrumb])
+}
+

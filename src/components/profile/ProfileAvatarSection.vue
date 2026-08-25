@@ -122,11 +122,10 @@ onUnmounted(() => {
       >
         <AvatarBalloons :is-dark="isDark" />
         <img
-          src="/profile/profile.png"
-          alt="Solomon Marvelous - Chief Technology Officer, Enterprise Architect, and AI / ML, Cloud & Data Leader based in Lagos, Nigeria"
+          src="/profile/profile.png?v=2"
+          alt="Solomon Marvelous, vertical AI integrations expert based in Lagos, Nigeria"
           data-avatar-img
           class="w-full h-full object-cover"
-          style="filter: grayscale(100%); transition: filter 0s;"
           loading="eager"
           fetchpriority="high"
           decoding="auto"
@@ -142,13 +141,10 @@ onUnmounted(() => {
           >
             <div class="relative">
               <img
-                src="/profile/profile.png"
-                alt="Solomon Marvelous - Chief Technology Officer, Enterprise Architect, and AI / ML, Cloud & Data Leader"
+                src="/profile/profile.png?v=2"
+                alt="Solomon Marvelous, vertical AI integrations expert based in Lagos, Nigeria"
                 data-modal-img
-                class="w-full aspect-square object-cover block cursor-pointer"
-                style="filter: grayscale(100%); transition: filter 0.35s ease;"
-                @mouseenter="(e) => (e.target as HTMLImageElement).style.filter = 'grayscale(0%)'"
-                @mouseleave="(e) => (e.target as HTMLImageElement).style.filter = 'grayscale(100%)'"
+                class="w-full aspect-square object-cover block"
               />
               <button
                 type="button"
@@ -160,7 +156,7 @@ onUnmounted(() => {
 
             <div class="px-5 pt-4 pb-5">
               <p class="text-[15px] font-semibold leading-snug" :class="isDark ? 'text-[#e8e5de]' : 'text-[#1a1a1a]'">Solomon Marvelous</p>
-              <p class="text-[12px] mt-0.5 mb-4" :class="isDark ? 'text-[#555]' : 'text-[#888]'">Chief Technology Officer · Enterprise Architect · AI / ML, Cloud & Data Leader</p>
+              <p class="text-[12px] mt-0.5 mb-4 leading-snug" :class="isDark ? 'text-[#555]' : 'text-[#888]'">Technology Leader - Founder &amp; CEO @JobBox | Connecting Companies With People, AI &amp; Data @Boltcliq. F.D.E / S.A / E.A</p>
 
               <div class="flex items-center gap-3 mb-4">
                 <a

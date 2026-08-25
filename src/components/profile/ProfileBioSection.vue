@@ -14,7 +14,7 @@ const emit = defineEmits<{
 <template>
   <section
     aria-label="About Solomon Marvelous"
-    class="mb-10"
+    class="mb-16"
     data-bio
     itemscope
     itemtype="https://schema.org/Person"
@@ -38,9 +38,10 @@ const emit = defineEmits<{
     </p>
     <p>
       I've always been driven by curiosity. Learning isn't just something I do. It's something I
-      genuinely enjoy. I love the challenge of mastering new ideas, creating meaningful products, and
-      sharing knowledge with others. Those passions have shaped my journey, influencing every product
-      I've built, every platform I've designed, and every community I've helped grow.
+      genuinely enjoy. That same obsession is why I now build vertical AI integrations: systems
+      that sit inside a real industry and help a business grow, instead of generic tools that demo well
+      and stall in production. Those passions have shaped every product I've shipped and every
+      community I've helped grow.
     </p>
     <p>
       You can find me on
@@ -48,7 +49,7 @@ const emit = defineEmits<{
       <a href="https://x.com/marvmargic" target="_blank" class="underline underline-offset-2" :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'">Twitter (X)</a>
       or reach me via
       <span class="inline-flex items-center gap-1">
-        <a href="mailto:solomon@boltcliq.com" class="underline underline-offset-2" :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'">email</a>
+        <a href="mailto:me@solomonmarvel.com" class="underline underline-offset-2" :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'">email</a>
         <button
           type="button"
           class="inline-flex items-center justify-center w-4 h-4 rounded transition-colors"
