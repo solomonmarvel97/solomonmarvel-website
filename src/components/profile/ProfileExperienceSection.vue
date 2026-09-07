@@ -42,7 +42,7 @@ function onLeave(company: string) {
       data-writing-label
     >Experience</h2>
     <ol
-      class="list-none p-0 m-0 grid gap-2 sm:grid-cols-2"
+      class="list-none p-0 m-0 grid gap-2"
       aria-label="Work history by company"
     >
       <li
@@ -52,13 +52,8 @@ function onLeave(company: string) {
         itemscope
         itemtype="https://schema.org/Organization"
         data-writing-row
-        class="rounded-xl border transition-[box-shadow,background-color] duration-200"
-        :class="[
-          isDark ? 'border-[#1e1e1c] bg-[#141412]' : 'border-[#e8e5de] bg-white',
-          isOpen(group.company)
-            ? (isDark ? 'shadow-[0_0_0_1px_rgba(232,229,222,0.08)]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.04)]')
-            : '',
-        ]"
+        class="rounded-xl border transition-colors duration-200"
+        :class="isDark ? 'border-[#1e1e1c] bg-[#141412]' : 'border-[#e8e5de] bg-white'"
         @pointerenter="onEnter(group.company)"
         @pointerleave="onLeave(group.company)"
       >
