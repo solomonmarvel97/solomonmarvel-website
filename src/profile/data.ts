@@ -240,6 +240,8 @@ export type ExperienceGroup = {
   company: string
   url?: string
   detail?: string
+  /** Short write-up shown when the experience card expands. */
+  summary: string
   roles: ExperienceRole[]
 }
 
@@ -248,6 +250,8 @@ export const experience: ExperienceGroup[] = [
     company: 'The JobBox Company',
     url: 'https://getjobbox.com',
     detail: 'AI-native recruitment',
+    summary:
+      'I founded JobBox to put AI inside the hiring workflow, not beside it. Recruiters and founders screen, score, shortlist, and explain candidate fit in minutes on enterprise-ready AI infrastructure.',
     roles: [
       { role: 'Founder & Chief Executive Officer' },
     ],
@@ -256,6 +260,8 @@ export const experience: ExperienceGroup[] = [
     company: 'Boltcliq Group',
     url: 'https://boltcliq.com',
     detail: '150k ARR Business Agency',
+    summary:
+      'My holding company and operating base since 2014. Agency work, consulting, and the companies under the Boltcliq umbrella. This is where I fund, ship, and grow the portfolio.',
     roles: [
       { role: 'Founder & Chief Executive Officer' },
     ],
@@ -263,6 +269,9 @@ export const experience: ExperienceGroup[] = [
   {
     company: 'PeerPay Network',
     url: 'https://peerpaynetwork.com',
+    detail: 'Peer-to-peer lending & settlement',
+    summary:
+      'As CTO I own the technical spine for peer-to-peer lending and settlement: architecture, reliability, and the production path from product idea to money moving safely.',
     roles: [
       { role: 'Chief Technology Officer' },
     ],
@@ -271,6 +280,8 @@ export const experience: ExperienceGroup[] = [
     company: 'GxPay',
     url: 'https://gxpay.net',
     detail: 'Fintech payment gateway',
+    summary:
+      'Principal solutions architecture for a payment gateway: how money routes, fails, recovers, and scales. Consulting work rooted in banking and payments systems I have already shipped.',
     roles: [
       { role: 'Principal Solutions Architect Consultant' },
     ],
@@ -279,6 +290,8 @@ export const experience: ExperienceGroup[] = [
     company: 'Luvie Technologies UK',
     url: 'https://luvie.io',
     detail: 'On-demand beauty & styling',
+    summary:
+      'I led as CTO through mid-2026, then shifted to technical advisor and independent contributor. On-demand beauty and styling with production engineering behind the consumer surface.',
     roles: [
       { role: 'Technical Advisor & Independent Contributor' },
       { role: 'Chief Technology Officer', period: '2025 – Aug 2026' },
@@ -287,6 +300,9 @@ export const experience: ExperienceGroup[] = [
   {
     company: 'MindStark AI',
     url: 'https://mindstarkai.com',
+    detail: 'AI venture studio',
+    summary:
+      'Lead architect for an AI venture studio. I design and ship the technical foundations ventures need before they look like products: systems, data, and the path into production.',
     roles: [
       { role: 'Lead Architect & Distinguished Software Engineer' },
     ],
@@ -294,6 +310,9 @@ export const experience: ExperienceGroup[] = [
   {
     company: 'Top Universe Org. (NGO)',
     url: 'https://topuniverse.org',
+    detail: '20k+ students trained',
+    summary:
+      'Boltcliq Educational Foundation work. Program leadership for training at scale: curriculum, engineering talent pipelines, and community programs that have reached 20k+ learners.',
     roles: [
       { role: 'Founding Partner & Program Lead' },
     ],
@@ -301,6 +320,9 @@ export const experience: ExperienceGroup[] = [
   {
     company: 'uLesson Group / Miva Open University',
     url: 'https://miva.edu.ng',
+    detail: 'EdTech & open university',
+    summary:
+      'Short, high-intensity stretch as Head of R&D and Senior AI Solutions Architect. Industry AI inside education products and institutional workflows, not classroom demos.',
     roles: [
       { role: 'Head of Research and Development', period: 'Aug 2025 – Oct 2025' },
       { role: 'Senior AI Solutions Architect / Technical Lead', period: 'May 2025 – Jun 2025' },
@@ -308,36 +330,54 @@ export const experience: ExperienceGroup[] = [
   },
   {
     company: 'First City Monument Bank',
+    detail: 'Banking & solutions architecture',
+    summary:
+      'Senior Solutions Architect in a Nigerian bank. Production systems, risk-aware delivery, and architecture that has to survive audit, latency, and volume, not just a pilot.',
     roles: [
       { role: 'Senior Solutions Architect', period: 'Aug 2023 – Jun 2025' },
     ],
   },
   {
     company: 'Bunkr Essentials',
+    detail: 'Product engineering',
+    summary:
+      'Principal engineering consulting: shipping product systems with the same production bar I use inside companies I own.',
     roles: [
       { role: 'Principal Software Engineer · Consultant', period: 'Jul 2023 – Oct 2023' },
     ],
   },
   {
     company: 'Redis',
+    detail: 'Developer education',
+    summary:
+      'Contract technical writing for Redis. Making complex infrastructure clear for builders who need it in production, not just in a hello-world tutorial.',
     roles: [
       { role: 'Contract Technical Writer', period: 'Sep 2022 – Jun 2023' },
     ],
   },
   {
     company: 'Hayche Network',
+    detail: 'Solutions & lead engineering',
+    summary:
+      'Technical partner work spanning solutions architecture and lead engineering: owning the design and the build when the product had to leave the whiteboard.',
     roles: [
       { role: 'Technical Partner / Solutions Architect & Lead Engineer', period: 'Aug 2021 – Sep 2022' },
     ],
   },
   {
     company: 'UmbrellaTree Colab',
+    detail: 'Project development',
+    summary:
+      'Project development lead across collaborative product work. Scope, delivery, and the engineering path from brief to shipped software.',
     roles: [
       { role: 'Project Development Lead', period: 'Sep 2020 – Sep 2022' },
     ],
   },
   {
     company: 'MyRetailer',
+    detail: 'Retail systems',
+    summary:
+      'Senior staff engineering on retail systems. Contract work focused on reliability and the operational software merchants actually run.',
     roles: [
       { role: 'Contract Senior Staff Engineer', period: 'Dec 2021 – Feb 2022' },
     ],
@@ -345,12 +385,18 @@ export const experience: ExperienceGroup[] = [
   {
     company: 'Encentral Solutions',
     url: 'https://www.encentralsolutions.com',
+    detail: 'Mobile applications',
+    summary:
+      'Mobile application engineering early in my career. Shipping client apps and learning how production software behaves once real users touch it.',
     roles: [
       { role: 'Mobile Application Engineer', period: 'Jul 2017 – Jan 2018' },
     ],
   },
   {
     company: 'Pingxtra',
+    detail: 'Campus social network · Closed',
+    summary:
+      'My first real product. A campus social network I founded and led as full-stack engineer. Closed later, but it taught me that shipping for users beats polishing for an audience of one.',
     roles: [
       { role: 'Founder & Full Stack Lead Engineer', period: 'Jan 2010 – 2014' },
     ],

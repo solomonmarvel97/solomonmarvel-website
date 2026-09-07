@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PhCopy, PhCheck } from '@phosphor-icons/vue'
+import { aboutStory } from '@/profile/about'
 
 defineProps<{
   isDark: boolean
@@ -13,7 +14,7 @@ const emit = defineEmits<{
 
 <template>
   <section
-    aria-label="About Solomon Marvelous"
+    aria-label="About Marv Solomon"
     class="mb-16"
     data-bio
     itemscope
@@ -21,32 +22,47 @@ const emit = defineEmits<{
     itemprop="description"
   >
     <h2
-      class="text-[11px] uppercase tracking-wider mb-4"
+      class="text-[11px] uppercase tracking-wider mb-2"
       :class="isDark ? 'text-[#444]' : 'text-[#aaa]'"
       data-writing-label
-    >My Story</h2>
+    >{{ aboutStory.pageTitle }}</h2>
+    <p
+      class="text-[13px] leading-[1.65] mb-8"
+      :class="isDark ? 'text-[#888]' : 'text-[#666]'"
+      data-writing-row
+    >{{ aboutStory.intro }}</p>
 
-    <div
-      class="text-[13px] leading-[1.65] space-y-3"
+    <div class="space-y-8">
+      <section
+        v-for="section in aboutStory.sections"
+        :key="section.id"
+        :aria-labelledby="`about-${section.id}`"
+      >
+        <h3
+          :id="`about-${section.id}`"
+          class="text-[12px] font-semibold tracking-wide mb-2"
+          :class="isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'"
+          data-writing-label
+        >{{ section.title }}</h3>
+        <div
+          class="text-[13px] leading-[1.65] space-y-3"
+          :class="isDark ? 'text-[#aaa]' : 'text-[#333]'"
+        >
+          <p v-for="(paragraph, i) in section.body" :key="i" data-writing-row>
+            {{ paragraph }}
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <p
+      class="mt-10 text-[13px] leading-[1.65]"
       :class="isDark ? 'text-[#aaa]' : 'text-[#333]'"
+      data-writing-row
     >
-    <p>
-      Born in Delta State, Nigeria, I started coding at age 8, experimenting with BASIC, Visual Basic 6,
-      and scripting before teaching myself Turbo Pascal, C#, Qt, and C++. At 14, I gained admission to
-      study Computer Science, graduating at 19. By 17, I had already built PingXtra, a campus social
-      network that sparked my passion for building products that connect people.
-    </p>
-    <p>
-      I've always been driven by curiosity. Learning isn't just something I do. It's something I
-      genuinely enjoy. That same obsession is why I now build vertical AI integrations: systems
-      that sit inside a real industry and help a business grow, instead of generic tools that demo well
-      and stall in production. Those passions have shaped every product I've shipped and every
-      community I've helped grow.
-    </p>
-    <p>
       You can find me on
-      <a href="https://linkedin.com/in/superdeveloper" target="_blank" class="underline underline-offset-2" :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'">LinkedIn</a>,
-      <a href="https://x.com/marvmargic" target="_blank" class="underline underline-offset-2" :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'">Twitter (X)</a>
+      <a href="https://linkedin.com/in/superdeveloper" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'">LinkedIn</a>,
+      <a href="https://x.com/marvmargic" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'">Twitter (X)</a>
       or reach me via
       <span class="inline-flex items-center gap-1">
         <a href="mailto:me@solomonmarvel.com" class="underline underline-offset-2" :class="isDark ? 'text-[#ccc] decoration-[#444]' : 'text-[#333] decoration-[#bbb]'">email</a>
@@ -62,6 +78,5 @@ const emit = defineEmits<{
         </button>
       </span>.
     </p>
-    </div>
   </section>
 </template>

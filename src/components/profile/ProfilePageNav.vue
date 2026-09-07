@@ -27,7 +27,7 @@ let handoffCancelled = false
 const items = [
   { to: '/', label: 'Work', exact: true },
   { to: '/experience', label: 'Experience', exact: true },
-  { to: '/about', label: 'My Story', exact: true },
+  { to: '/about', label: 'About', exact: true },
 ] as const
 
 function isActive(to: string, exact: boolean) {

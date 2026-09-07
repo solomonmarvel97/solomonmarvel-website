@@ -59,7 +59,7 @@ function toggleTheme() {
 const { time, weatherIcon, tempC } = useProfileClockWeather()
 
 const mainLabel = computed(() => {
-  if (route.path === '/about') return 'Solomon Marvelous - My Story'
+  if (route.path === '/about') return 'Solomon Marvelous - About Marv Solomon'
   if (route.path === '/experience') return 'Solomon Marvelous - Experience'
   return 'Solomon Marvelous - Vertical AI Integrations'
 })

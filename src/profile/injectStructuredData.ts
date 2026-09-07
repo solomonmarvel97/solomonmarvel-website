@@ -167,17 +167,17 @@ export function injectProfileStructuredData() {
   replaceLdJson([personSchema(), profilePage, websiteSchema(), breadcrumb, service, faqPage])
 }
 
-/** Injects JSON-LD for the My Story / About page. Idempotent per navigation. */
+/** Injects JSON-LD for the About Marv Solomon page. Idempotent per navigation. */
 export function injectAboutStructuredData() {
   const aboutPage = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     '@id': `${BASE_URL}/about#page`,
-    name: 'My Story: From Coding at 8 to Vertical AI | Solomon Marvelous',
-    description: 'Born in Delta State, Nigeria, Solomon Marvelous started coding at 8. Today he is a vertical AI integrations expert helping businesses grow and scale with AI.',
+    name: 'About Marv Solomon | Solomon Marvelous',
+    description: 'About Marv Solomon: where he started, what he has built, what he learned, what he is building now, and where he is going.',
     url: `${BASE_URL}/about`,
     mainEntity: { '@id': `${BASE_URL}/#person` },
-    dateModified: '2026-08-25',
+    dateModified: '2026-09-07',
     inLanguage: 'en',
     image: `${BASE_URL}/profile/profile.png`,
   }
@@ -187,7 +187,7 @@ export function injectAboutStructuredData() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Work', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: 'My Story', item: `${BASE_URL}/about` },
+      { '@type': 'ListItem', position: 2, name: 'About', item: `${BASE_URL}/about` },
     ],
   }
 

@@ -15,7 +15,7 @@ usePageMeta({
   description: seo.aboutDescription,
   canonical: 'https://solomonmarvelous.com/about',
   keywords:
-    'Solomon Marvelous story, vertical AI expert, Lagos Nigeria, Boltcliq, JobBox, production AI',
+    'About Marv Solomon, Solomon Marvelous story, vertical AI expert, Lagos Nigeria, Boltcliq, JobBox, production AI',
   og: {
     type: 'profile',
     title: seo.aboutTitle,

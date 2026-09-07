@@ -41,9 +41,9 @@ export const seo = {
   keywords:
     'Solomon Marvelous, vertical AI integrations, vertical AI, vertical AI expert, AI for business growth, scale with AI, grow with AI, industry-specific AI, AI integration consultant, embed AI in products, vertical AI for operations, hire vertical AI expert',
   imageAlt: 'Solomon Marvelous, vertical AI integrations expert based in Lagos, Nigeria',
-  aboutTitle: 'My Story: From Coding at 8 to Vertical AI | Solomon Marvelous',
+  aboutTitle: 'About Marv Solomon | Solomon Marvelous',
   aboutDescription:
-    'Born in Delta State, Nigeria, Solomon Marvelous started coding at 8. Today he is a vertical AI integrations expert helping businesses grow and scale with AI.',
+    'About Marv Solomon: where he started, what he has built, what he learned, what he is building now, and where he is going. Vertical AI, JobBox, Boltcliq, and two decades of production systems.',
   experienceTitle: 'Experience | Solomon Marvelous',
   experienceDescription:
     'Experience of Solomon Marvelous, grouped by company, plus the companies he founded and operates across fintech, recruitment, education, and more.',
