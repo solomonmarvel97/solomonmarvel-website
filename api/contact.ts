@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { inquiryForms, isInquiryIntent, type InquiryFieldKey, type InquiryIntent } from '../src/profile/inquiries'
+import { inquiryForms, isInquiryIntent, type InquiryFieldKey, type InquiryIntent } from '../src/profile/inquiries.js'
 
 type ContactBody = {
   intent?: string
