@@ -105,6 +105,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const to = process.env.CONTACT_TO_EMAIL || 'solomonmarvel@hotmail.com'
   const from = process.env.CONTACT_FROM_EMAIL || 'Solomon Marvelous <noreply@solomonmarvel.com>'
+  const reply_to = process.env.CONTACT_REPLY_TO_EMAIL || 'me@solomonmarvel.com'
 
   const detailLines = [
     `Type: ${config.emailLabel}`,
@@ -156,7 +157,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { error: visitorError } = await resend.emails.send({
       from,
       to: [email],
-      replyTo: to,
+      replyTo: reply_to,
       subject: `Request for ${config.emailLabel} received`,
       html: visitorHtml,
     })
