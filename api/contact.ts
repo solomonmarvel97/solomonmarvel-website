@@ -106,8 +106,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const to = process.env.CONTACT_TO_EMAIL || 'solomonmarvel@hotmail.com'
   const from = process.env.CONTACT_FROM_EMAIL || 'Solomon Marvelous <noreply@solomonmarvel.com>'
 
-  const resend = new Resend(apiKey)
-
   const detailLines = [
     `Type: ${config.emailLabel}`,
     `Name: ${name}`,
@@ -145,6 +143,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   `.trim()
 
   try {
+    const resend = new Resend(apiKey)
     const { error } = await resend.emails.send({
       from,
       to: [to],
