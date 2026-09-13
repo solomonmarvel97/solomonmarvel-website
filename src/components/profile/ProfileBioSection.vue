@@ -47,6 +47,7 @@ function onLightboxOpen(v: boolean) {
 function photoGridClass(count: number) {
   if (count <= 1) return 'grid grid-cols-1'
   if (count === 3) return 'grid grid-cols-2 grid-rows-2 gap-2 sm:gap-2.5 auto-rows-[140px] sm:auto-rows-[180px]'
+  if (count === 4) return 'grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 auto-rows-[120px] sm:auto-rows-[150px]'
   if (count === 6) return 'grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 auto-rows-[120px] sm:auto-rows-[150px]'
   return 'grid grid-cols-2 gap-2 sm:gap-2.5 auto-rows-[140px] sm:auto-rows-[160px]'
 }
@@ -54,6 +55,8 @@ function photoGridClass(count: number) {
 function photoCellClass(index: number, count: number) {
   if (count <= 1) return 'min-h-[280px] sm:min-h-[340px]'
   if (count === 3 && index === 0) return 'row-span-2'
+  if (count === 4 && index === 0) return 'col-span-2 row-span-2'
+  if (count === 4 && index === 3) return 'col-span-2 sm:col-span-3'
   if (count === 6 && index === 0) return 'col-span-2 row-span-2'
   return ''
 }

@@ -82,6 +82,11 @@ export const aboutStory = {
       ],
       photos: [
         {
+          src: '/profile/story/pingxtra-team-outdoor.jpg',
+          alt: 'Pingxtra Social team outside in branded shirts',
+          caption: 'The Pingxtra team. Campus product, real faces.',
+        },
+        {
           src: '/profile/story/pingxtra-team.jpg',
           alt: 'Pingxtra Social team group selfie',
           caption: 'Pingxtra Social. The campus team.',
