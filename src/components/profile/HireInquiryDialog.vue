@@ -147,7 +147,7 @@ async function onSubmit() {
       >
         <div
           class="sticky top-0 z-[1] flex items-start justify-between gap-3 border-b px-5 py-4"
-          :class="isDark ? 'border-[#2a2a28]' : 'border-[#e8eaed]'"
+          :class="isDark ? 'bg-[#1a1a18] border-[#2a2a28]' : 'bg-white border-[#e8eaed]'"
         >
           <div class="min-w-0 pr-8">
             <h2

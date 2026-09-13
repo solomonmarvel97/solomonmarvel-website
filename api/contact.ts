@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { inquiryForms, isInquiryIntent, type InquiryFieldKey, type InquiryIntent } from '../src/profile/inquiries'
+import { inquiryForms, isInquiryIntent, type InquiryFieldKey, type InquiryIntent } from '../src/profile/inquiries.js'
 
 type ContactBody = {
   intent?: string
@@ -105,8 +105,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const to = process.env.CONTACT_TO_EMAIL || 'solomonmarvel@hotmail.com'
   const from = process.env.CONTACT_FROM_EMAIL || 'Solomon Marvelous <noreply@solomonmarvel.com>'
-
-  const resend = new Resend(apiKey)
+  const reply_to = process.env.CONTACT_REPLY_TO_EMAIL || 'me@solomonmarvel.com'
 
   const detailLines = [
     `Type: ${config.emailLabel}`,
@@ -126,7 +125,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     ...detailLines,
   ]
 
-  const htmlBlocks = [
+  const ownerHtmlBlocks = [
     `<p style="margin: 0 0 16px;">New <strong>${escapeHtml(config.emailLabel)}</strong> from <strong>solomonmarvelous.com</strong></p>`,
     `<p style="margin: 0 0 4px;"><strong>Name:</strong> ${escapeHtml(name)}</p>`,
     `<p style="margin: 0 0 4px;"><strong>Email:</strong> ${escapeHtml(email)}</p>`,
@@ -138,24 +137,47 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     message ? `<p style="margin: 16px 0 4px;"><strong>Message:</strong></p><p style="margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>` : '',
   ].filter(Boolean)
 
-  const html = `
+  const ownerHtml = `
     <div style="font-family: system-ui, sans-serif; line-height: 1.5; color: #1a1a1a;">
-      ${htmlBlocks.join('\n      ')}
+      ${ownerHtmlBlocks.join('\n      ')}
+    </div>
+  `.trim()
+
+  const visitorHtml = `
+    <div style="font-family: system-ui, sans-serif; line-height: 1.5; color: #1a1a1a;">
+      <p style="margin: 0 0 16px;">Hi ${escapeHtml(name)},</p>
+      <p style="margin: 0 0 16px;">Thanks for your ${escapeHtml(config.emailLabel.toLowerCase())} request. I have received your message and will review it shortly.</p>
+      <p style="margin: 0 0 16px;">You can reply directly to this email if you need to add anything.</p>
+      <p style="margin: 0; font-weight: bold;">Solomon Marvelous</p>
     </div>
   `.trim()
 
   try {
-    const { error } = await resend.emails.send({
+    const resend = new Resend(apiKey)
+    const { error: visitorError } = await resend.emails.send({
+      from,
+      to: [email],
+      replyTo: reply_to,
+      subject: `Request for ${config.emailLabel} received`,
+      html: visitorHtml,
+    })
+
+    if (visitorError) {
+      console.error('Visitor email error:', visitorError)
+      return res.status(502).json({ error: 'Failed to send message. Please try again.' })
+    }
+
+    const { error: ownerError } = await resend.emails.send({
       from,
       to: [to],
       replyTo: email,
       subject: `${config.emailLabel} from ${name}`,
       text: textLines.join('\n'),
-      html,
+      html: ownerHtml,
     })
 
-    if (error) {
-      console.error('Resend error:', error)
+    if (ownerError) {
+      console.error('Owner email error:', ownerError)
       return res.status(502).json({ error: 'Failed to send message. Please try again.' })
     }
 
