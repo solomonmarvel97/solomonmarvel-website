@@ -61,6 +61,7 @@ const { time, weatherIcon, tempC } = useProfileClockWeather()
 const mainLabel = computed(() => {
   if (route.path === '/about') return 'Solomon Marvelous - About Marv Solomon'
   if (route.path === '/experience') return 'Solomon Marvelous - Experience'
+  if (route.path === '/jobbox') return 'Solomon Marvelous - JobBox'
   return 'Solomon Marvelous - Vertical AI Integrations'
 })
 

@@ -36,7 +36,6 @@ function personSchema() {
       'https://github.com/solomonmarvel97',
       'https://boltcliq.com',
       'https://getjobbox.com',
-      'https://peerpaynetwork.com',
       'https://luvie.io',
     ],
     knowsAbout: [
@@ -53,11 +52,6 @@ function personSchema() {
         '@type': 'Occupation',
         name: 'Founder & Chief Executive Officer',
         occupationLocation: { '@type': 'Organization', name: 'The JobBox Company', url: 'https://getjobbox.com' },
-      },
-      {
-        '@type': 'Occupation',
-        name: 'Chief Technology Officer',
-        occupationLocation: { '@type': 'Organization', name: 'PeerPay Network', url: 'https://peerpaynetwork.com' },
       },
       {
         '@type': 'Occupation',

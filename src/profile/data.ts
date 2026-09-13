@@ -62,6 +62,8 @@ export type Product = {
   detail: string[]
   url?: string
   urlLabel?: string
+  /** Internal site path. When set, product opens this page instead of the modal. */
+  page?: string
   isNew?: boolean
 }
 
@@ -82,11 +84,13 @@ export const products: Product[] = [
     title: 'JobBox',
     year: '2026',
     isNew: true,
+    page: '/jobbox',
     url: 'https://getjobbox.com',
     urlLabel: 'Visit JobBox',
-    pitch: 'AI-native recruitment workspace for screening, scoring, and explaining candidate fit in minutes.',
+    pitch: 'AI-native recruitment workspace for modern teams.',
     detail: [
-      'JobBox is an AI-native recruitment workspace that helps recruiters, founders, and hiring teams screen, score, shortlist, and explain candidate fit in minutes instead of weeks, leveraging our enterprise-ready AI infrastructure.',
+      'JobBox is the agentic operating system for recruiters. It handles complex recruitment workflows from start to finish, so recruiters can achieve more than ever before.',
+      'An AI-native full stack recruitment workspace and recruitment infrastructure provider, built for startups and enterprise operators.',
     ],
   },
   {
@@ -140,6 +144,8 @@ export type Company = {
   year: string
   status: string
   url?: string
+  /** Internal site path for dedicated company/product page. */
+  page?: string
   flagship?: boolean
   affiliation?: string
   roles?: CompanyRole[]
@@ -154,20 +160,19 @@ export const companies: CompanyIndustryGroup[] = [
   {
     industry: 'Recruitment',
     companies: [
-      { title: 'The JobBox Company', role: 'Founder & Chief Executive Officer · AI-native recruitment', year: '2025', status: 'Present', url: 'https://getjobbox.com' },
+      { title: 'The JobBox Company', role: 'Founder & Chief Executive Officer · AI-native recruitment workspace', year: '2025', status: 'Present', url: 'https://getjobbox.com', page: '/jobbox' },
     ],
   },
   {
-    industry: 'Holding & consulting',
+    industry: 'Agency & consulting',
     companies: [
-      { title: 'Boltcliq Group', role: 'Founder & Chief Executive Officer', affiliation: '150k ARR Business Agency', year: '2014', status: 'Present', url: 'https://boltcliq.com', flagship: true },
+      { title: 'Boltcliq Group', role: 'Founder & Chief Executive Officer', affiliation: 'Software development, consulting & outsourcing', year: '2014', status: 'Present', url: 'https://boltcliq.com', flagship: true },
       { title: 'Boltcliq Consult (Consulting)', role: 'Founder', year: '2020', status: 'Present', url: 'https://boltcliq.com' },
     ],
   },
   {
     industry: 'Fintech & payments',
     companies: [
-      { title: 'PeerPay Network', role: 'Chief Technology Officer · Peer-to-peer lending & settlement', year: '2025', status: 'Present', url: 'https://peerpaynetwork.com' },
       { title: 'GxPay', role: 'Principal Solutions Architect · Consultant', affiliation: 'Payment gateway', year: '2026', status: 'Present', url: 'https://gxpay.net' },
     ],
   },
@@ -208,7 +213,7 @@ export const companies: CompanyIndustryGroup[] = [
   {
     industry: 'Logistics',
     companies: [
-      { title: 'Swift', role: 'Founding Partner · Logistics for Boltcliq companies & partner brands', affiliation: 'A Boltcliq Partner', year: '2023', status: 'Present' },
+      { title: 'Swift', role: 'Founding Partner · Logistics for partner brands', year: '2023', status: 'Present' },
     ],
   },
   {
@@ -226,7 +231,8 @@ export const companies: CompanyIndustryGroup[] = [
   {
     industry: 'Social',
     companies: [
-      { title: 'Pingxtra', role: 'Founder', year: '2010', status: 'Closed' },
+      { title: 'Pingxtra Social', role: 'Founder · Campus social product', year: '2014', status: 'Closed' },
+      { title: 'Amtech Solutions', role: 'Co-founder · Technical lead, websites & training', year: '2009', status: 'Closed' },
     ],
   },
 ]
@@ -239,6 +245,7 @@ export type ExperienceRole = {
 export type ExperienceGroup = {
   company: string
   url?: string
+  page?: string
   detail?: string
   /** Short write-up shown when the experience card expands. */
   summary: string
@@ -249,9 +256,10 @@ export const experience: ExperienceGroup[] = [
   {
     company: 'The JobBox Company',
     url: 'https://getjobbox.com',
-    detail: 'AI-native recruitment',
+    page: '/jobbox',
+    detail: 'AI-native recruitment workspace',
     summary:
-      'I founded JobBox to put AI inside the hiring workflow, not beside it. Recruiters and founders screen, score, shortlist, and explain candidate fit in minutes on enterprise-ready AI infrastructure.',
+      'AI-native recruitment workspace for modern teams. An agentic operating system that handles complex recruitment workflows from start to finish.',
     roles: [
       { role: 'Founder & Chief Executive Officer' },
     ],
@@ -259,21 +267,11 @@ export const experience: ExperienceGroup[] = [
   {
     company: 'Boltcliq Group',
     url: 'https://boltcliq.com',
-    detail: '150k ARR Business Agency',
+    detail: 'Software development, consulting & outsourcing',
     summary:
-      'My holding company and operating base since 2014. Agency work, consulting, and the companies under the Boltcliq umbrella. This is where I fund, ship, and grow the portfolio.',
+      'My software development agency since 2014. Consulting, outsourcing, and shipping production software for clients and for products I build. Not a holding company. An agency that builds and ships.',
     roles: [
       { role: 'Founder & Chief Executive Officer' },
-    ],
-  },
-  {
-    company: 'PeerPay Network',
-    url: 'https://peerpaynetwork.com',
-    detail: 'Peer-to-peer lending & settlement',
-    summary:
-      'As CTO I own the technical spine for peer-to-peer lending and settlement: architecture, reliability, and the production path from product idea to money moving safely.',
-    roles: [
-      { role: 'Chief Technology Officer' },
     ],
   },
   {
@@ -393,12 +391,21 @@ export const experience: ExperienceGroup[] = [
     ],
   },
   {
-    company: 'Pingxtra',
-    detail: 'Campus social network · Closed',
+    company: 'Pingxtra Social',
+    detail: 'Campus social product · Closed',
     summary:
-      'My first real product. A campus social network I founded and led as full-stack engineer. Closed later, but it taught me that shipping for users beats polishing for an audience of one.',
+      'Second company while in school. We built a campus social media product with a small team. It did not take off because of money and resources, and that failure taught me what shipping with a team actually costs.',
     roles: [
-      { role: 'Founder & Full Stack Lead Engineer', period: 'Jan 2010 – 2014' },
+      { role: 'Founder & Full Stack Lead Engineer', period: '2014 – 2015' },
+    ],
+  },
+  {
+    company: 'Amtech Solutions',
+    detail: 'ICT services & training · Closed',
+    summary:
+      'First company with my elder brother. I was the technical lead: basic websites, student training in Word and typing, hardware repair, power packs, TVs, DVDs, and early drone experiments from electrical parts.',
+    roles: [
+      { role: 'Co-founder & Technical Lead', period: '2009 – 2010' },
     ],
   },
 ]

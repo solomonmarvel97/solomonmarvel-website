@@ -123,15 +123,23 @@ function onLeave(company: string) {
                   >{{ item.period }}</span>
                 </li>
               </ul>
-              <a
-                v-if="group.url"
-                :href="group.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="mb-3 inline-block text-[11px] font-medium underline-offset-2 hover:underline"
-                :class="isDark ? 'text-[#888]' : 'text-[#777]'"
-                itemprop="url"
-              >Visit site</a>
+              <div class="mb-3 flex flex-wrap items-center gap-3">
+                <RouterLink
+                  v-if="group.page"
+                  :to="group.page"
+                  class="inline-block text-[11px] font-medium underline-offset-2 hover:underline"
+                  :class="isDark ? 'text-[#e8e5de]' : 'text-[#1a1a1a]'"
+                >Read more</RouterLink>
+                <a
+                  v-if="group.url"
+                  :href="group.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block text-[11px] font-medium underline-offset-2 hover:underline"
+                  :class="isDark ? 'text-[#888]' : 'text-[#777]'"
+                  itemprop="url"
+                >Visit site</a>
+              </div>
             </div>
           </div>
         </div>

@@ -40,8 +40,14 @@ defineProps<{
               >{{ item.year }}</span>
               <div class="flex min-w-0 flex-1 flex-col">
                 <div class="flex min-w-0 items-baseline gap-2">
+                  <RouterLink
+                    v-if="item.page"
+                    :to="item.page"
+                    class="min-w-0 truncate text-[13px] font-medium"
+                    :class="item.flagship ? 'text-[#c9a84c]' : isDark ? 'text-[#d8d5ce]' : 'text-[#1a1a1a]'"
+                  >{{ item.title }}</RouterLink>
                   <a
-                    v-if="item.url"
+                    v-else-if="item.url"
                     :href="item.url"
                     target="_blank"
                     rel="noopener noreferrer"

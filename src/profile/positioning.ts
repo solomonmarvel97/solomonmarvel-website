@@ -26,7 +26,7 @@ export const positioning = {
   salesOutcome:
     'The outcome I sell is a vertical AI system in production: specific to your industry, wired into the work your people already do, and built so you can grow volume without growing headcount at the same rate. That is how you scale with AI: by putting intelligence into the machine that already runs the operation.',
   salesAuthority:
-    'I have spent two decades shipping production systems. Senior Solutions Architect at FCMB. Ex Head of Research and Development. I built JobBox, sit as CTO at PeerPay, advise Luvie UK, and consult GxPay. 20k+ people trained, 150+ engineers led, $200k+ of my own capital in the companies I run. If you operate in fintech, banking, recruitment, education, or payments, I have already done this work in your industry.',
+    'I have spent two decades shipping production systems. Senior Solutions Architect at FCMB. Ex Head of Research and Development. I built JobBox, advise Luvie UK, and consult GxPay. 20k+ people trained, 150+ engineers led, $200k+ of my own capital in the companies I run. If you operate in fintech, banking, recruitment, education, or payments, I have already done this work in your industry.',
   salesCta: 'If you are ready to put AI into the operation, not onto a slide, start an engagement.',
   ctaKicker: 'Ready when the work is real',
   ctaHeadline: 'Put AI inside the operation, not beside it.',
@@ -43,10 +43,13 @@ export const seo = {
   imageAlt: 'Solomon Marvelous, vertical AI integrations expert based in Lagos, Nigeria',
   aboutTitle: 'About Marv Solomon | Solomon Marvelous',
   aboutDescription:
-    'About Marv Solomon: where he started, what he has built, what he learned, what he is building now, and where he is going. Vertical AI, JobBox, Boltcliq, and two decades of production systems.',
+    'About Marv Magic (Marvelous Solomon Akporowho): from Computer Science at 13, Amtech Solutions with his brother, Pingxtra Social in school, to JobBox, Boltcliq, and vertical AI in production.',
   experienceTitle: 'Experience | Solomon Marvelous',
   experienceDescription:
     'Experience of Solomon Marvelous, grouped by company, plus the companies he founded and operates across fintech, recruitment, education, and more.',
+  jobboxTitle: 'JobBox | AI-native recruitment workspace | Solomon Marvelous',
+  jobboxDescription:
+    'JobBox is an AI-native recruitment workspace for modern teams. An agentic operating system for recruiters, built by Solomon Marvelous.',
 } as const
 
 export type FeaturedOffer = {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { PhX, PhArrowSquareOut } from '@phosphor-icons/vue'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { haptic } from '@/lib/haptics'
@@ -10,9 +11,15 @@ defineProps<{
   products: Product[]
 }>()
 
+const router = useRouter()
 const openProduct = ref<Product | null>(null)
 
 function open(item: Product) {
+  if (item.page) {
+    haptic.tap()
+    router.push(item.page)
+    return
+  }
   openProduct.value = item
   haptic.tap()
 }
