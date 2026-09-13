@@ -275,6 +275,15 @@ export const experience: ExperienceGroup[] = [
     ],
   },
   {
+    company: 'PeerPay Network',
+    url: 'https://peerpaynetwork.com',
+    detail: 'Peer-to-peer lending & settlement',
+    summary: 'Chief Technology Officer.',
+    roles: [
+      { role: 'Chief Technology Officer' },
+    ],
+  },
+  {
     company: 'GxPay',
     url: 'https://gxpay.net',
     detail: 'Fintech payment gateway',
