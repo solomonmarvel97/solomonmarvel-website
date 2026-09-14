@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref, watch } from 'vue'
+import { computed, nextTick, reactive, ref, watch } from 'vue'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import Button from '@/components/ui/Button.vue'
 import { PhX, PhSpinner } from '@phosphor-icons/vue'
@@ -7,6 +7,37 @@ import {
   inquiryForms,
   type InquiryIntent,
 } from '@/profile/inquiries'
+
+type CalCommand = (...args: unknown[]) => void
+type CalApi = CalCommand & {
+  config?: { forwardQueryParams?: boolean }
+  loaded?: boolean
+  ns?: Record<string, CalCommand>
+  q?: unknown[]
+}
+
+declare global {
+  interface Window {
+    Cal?: CalApi
+  }
+}
+
+function openCalBooking() {
+  if (!window.Cal) throw new Error('Cal.com failed to load')
+
+  const trigger = document.createElement('button')
+  trigger.type = 'button'
+  trigger.setAttribute('data-cal-link', 'mindstark/sync-with-marv')
+  trigger.setAttribute('data-cal-namespace', 'sync-with-marv')
+  trigger.setAttribute('data-cal-config', JSON.stringify({
+    layout: 'month_view',
+    useSlotsViewOnSmallScreen: 'true',
+  }))
+  trigger.style.display = 'none'
+  document.body.appendChild(trigger)
+  trigger.click()
+  window.setTimeout(() => trigger.remove(), 1000)
+}
 
 const props = withDefaults(defineProps<{
   open: boolean
@@ -103,33 +134,45 @@ async function onSubmit() {
   errorMessage.value = ''
   submitting.value = true
 
+  const isLocal = window.location.hostname === 'localhost'
+
   try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        intent: props.intent,
-        name: form.name,
-        email: form.email,
-        company: form.company,
-        industry: form.industry,
-        workflow: form.workflow,
-        timeline: form.timeline,
-        role: form.role,
-        message: form.message,
-        website: form.website,
-      }),
-    })
+    if (!isLocal) {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          intent: props.intent,
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          industry: form.industry,
+          workflow: form.workflow,
+          timeline: form.timeline,
+          role: form.role,
+          message: form.message,
+          website: form.website,
+        }),
+      })
 
-    const data = (await res.json().catch(() => ({}))) as { error?: string; ok?: boolean }
+      const data = (await res.json().catch(() => ({}))) as { error?: string; ok?: boolean }
 
-    if (!res.ok) {
-      errorMessage.value = data.error || 'Failed to send. Please try again.'
-      return
+      if (!res.ok) {
+        errorMessage.value = data.error || 'Failed to send. Please try again.'
+        return
+      }
     }
 
     success.value = true
     resetForm()
+    close()
+
+    await nextTick()
+    try {
+      openCalBooking()
+    } catch (error: unknown) {
+      console.error('Cal.com error:', error)
+    }
   } catch {
     errorMessage.value = 'Network error. Please try again.'
   } finally {

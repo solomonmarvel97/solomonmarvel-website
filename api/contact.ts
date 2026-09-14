@@ -125,32 +125,68 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     ...detailLines,
   ]
 
-  const ownerHtmlBlocks = [
-    `<p style="margin: 0 0 16px;">New <strong>${escapeHtml(config.emailLabel)}</strong> from <strong>solomonmarvelous.com</strong></p>`,
-    `<p style="margin: 0 0 4px;"><strong>Name:</strong> ${escapeHtml(name)}</p>`,
-    `<p style="margin: 0 0 4px;"><strong>Email:</strong> ${escapeHtml(email)}</p>`,
-    company ? `<p style="margin: 0 0 4px;"><strong>Company:</strong> ${escapeHtml(company)}</p>` : '',
-    industry ? `<p style="margin: 0 0 4px;"><strong>Industry:</strong> ${escapeHtml(industry)}</p>` : '',
-    role ? `<p style="margin: 0 0 4px;"><strong>Role:</strong> ${escapeHtml(role)}</p>` : '',
-    timeline ? `<p style="margin: 0 0 4px;"><strong>Timeline:</strong> ${escapeHtml(timeline)}</p>` : '',
-    workflow ? `<p style="margin: 16px 0 4px;"><strong>Workflow:</strong></p><p style="margin: 0; white-space: pre-wrap;">${escapeHtml(workflow)}</p>` : '',
-    message ? `<p style="margin: 16px 0 4px;"><strong>Message:</strong></p><p style="margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>` : '',
-  ].filter(Boolean)
+  const detailRows = [
+    ['Name', escapeHtml(name)],
+    ['Email', escapeHtml(email)],
+    company ? ['Company', escapeHtml(company)] : null,
+    industry ? ['Industry', escapeHtml(industry)] : null,
+    role ? ['Role', escapeHtml(role)] : null,
+    timeline ? ['Timeline', escapeHtml(timeline)] : null,
+    workflow ? ['Workflow', escapeHtml(workflow)] : null,
+    message ? ['Message', escapeHtml(message)] : null,
+  ].filter((row): row is [string, string] => row !== null)
 
-  const ownerHtml = `
-    <div style="font-family: system-ui, sans-serif; line-height: 1.5; color: #1a1a1a;">
-      ${ownerHtmlBlocks.join('\n      ')}
-    </div>
+  const detailRowsHtml = detailRows.map(([label, value]) => `
+    <tr>
+      <td style="width: 30%; padding: 12px 16px; border-bottom: 1px solid #e5e7eb; vertical-align: top; color: #6b7280; font-size: 13px; font-weight: 600;">${label}</td>
+      <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; vertical-align: top; color: #111827; font-size: 14px; white-space: pre-wrap;">${value}</td>
+    </tr>`).join('')
+
+  const emailShell = (content: string) => `
+    <!doctype html>
+    <html>
+      <body style="margin: 0; padding: 24px 12px; background: #f3f4f6; font-family: Arial, Helvetica, sans-serif; color: #111827;">
+        <div style="display: none; max-height: 0; overflow: hidden; opacity: 0;">${escapeHtml(config.emailLabel)} from Solomon Marvelous</div>
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width: 640px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
+          <tr>
+            <td style="padding: 28px 32px; background: #171717; color: #ffffff;">
+              <p style="margin: 0 0 8px; color: #a3a3a3; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;">Solomon Marvelous</p>
+              <h1 style="margin: 0; font-size: 24px; line-height: 1.25; font-weight: 700;">${escapeHtml(config.emailLabel)}</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 28px 32px;">${content}</td>
+          </tr>
+          <tr>
+            <td style="padding: 20px 32px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 12px; line-height: 1.5;">
+              Solomon Marvelous · Vertical AI integrations<br />
+              <a href="https://solomonmarvelous.com" style="color: #4b5563;">solomonmarvelous.com</a>
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>
   `.trim()
 
-  const visitorHtml = `
-    <div style="font-family: system-ui, sans-serif; line-height: 1.5; color: #1a1a1a;">
-      <p style="margin: 0 0 16px;">Hi ${escapeHtml(name)},</p>
-      <p style="margin: 0 0 16px;">Thanks for your ${escapeHtml(config.emailLabel.toLowerCase())} request. I have received your message and will review it shortly.</p>
-      <p style="margin: 0 0 16px;">You can reply directly to this email if you need to add anything.</p>
-      <p style="margin: 0; font-weight: bold;">Solomon Marvelous</p>
-    </div>
-  `.trim()
+  const ownerHtml = emailShell(`
+    <p style="margin: 0 0 8px; color: #6b7280; font-size: 13px;">New inquiry received from the website.</p>
+    <h2 style="margin: 0 0 24px; font-size: 20px; line-height: 1.3;">${escapeHtml(config.emailLabel)}</h2>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #e5e7eb; border-radius: 8px; border-collapse: separate; overflow: hidden;">
+      ${detailRowsHtml}
+    </table>
+    <p style="margin: 24px 0 0; font-size: 14px; line-height: 1.6;">Reply directly to this email to respond to ${escapeHtml(name)}.</p>
+  `)
+
+  const visitorHtml = emailShell(`
+    <p style="margin: 0 0 16px; font-size: 16px;">Hi ${escapeHtml(name)},</p>
+    <p style="margin: 0 0 16px; font-size: 15px; line-height: 1.6;">Thanks for sending your ${escapeHtml(config.emailLabel.toLowerCase())} request. I have received the details below and will review them shortly.</p>
+    <h2 style="margin: 24px 0 12px; font-size: 16px;">Your request</h2>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #e5e7eb; border-radius: 8px; border-collapse: separate; overflow: hidden;">
+      ${detailRowsHtml}
+    </table>
+    <p style="margin: 24px 0 16px; font-size: 14px; line-height: 1.6;">I will reply by email if this is a good fit. You can reply directly to this confirmation if you need to add anything.</p>
+    <p style="margin: 0; font-size: 15px; font-weight: 700;">Solomon Marvelous</p>
+  `)
 
   try {
     const resend = new Resend(apiKey)
